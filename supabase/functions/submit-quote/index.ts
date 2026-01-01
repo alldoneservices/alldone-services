@@ -388,7 +388,7 @@ const handler = async (req: Request): Promise<Response> => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "All Done Services <onboarding@resend.dev>",
+          from: "All Done Services <info@alldone-services.ca>",
           to: ["info@alldone-services.ca"],
           subject: `New Quote Request: ${serviceName} - ${safeName}`,
           html: businessEmailHtml,
@@ -414,7 +414,7 @@ const handler = async (req: Request): Promise<Response> => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: "All Done Services <onboarding@resend.dev>",
+          from: "All Done Services <info@alldone-services.ca>",
           to: [email],
           subject: "Thank you for your quote request - All Done Services",
           html: customerEmailHtml,
