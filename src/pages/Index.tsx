@@ -1,13 +1,37 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import SEO from '@/components/SEO';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import Hero from '@/components/home/Hero';
+import Services from '@/components/home/Services';
+import WhyUs from '@/components/home/WhyUs';
+import QuoteForm from '@/components/home/QuoteForm';
+import CTA from '@/components/home/CTA';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Index = () => {
+  const { language } = useLanguage();
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      <SEO
+        title={language === 'pt' 
+          ? 'All Done Services - Serviços Profissionais de Manutenção em Vancouver'
+          : 'All Done Services - Professional Property Care in Vancouver'}
+        description={language === 'pt'
+          ? 'Uma ligação, tudo resolvido! Serviços profissionais de lavagem de alta pressão, manutenção e pintura para propriedades comerciais, residenciais e condomínios na região de Vancouver.'
+          : 'One call, all done! Professional pressure washing, handyman, and painting services for commercial, residential, and strata properties in Greater Vancouver Area.'}
+        canonical="https://alldone-services.ca"
+      />
+      <Header />
+      <main>
+        <Hero />
+        <Services />
+        <WhyUs />
+        <QuoteForm />
+        <CTA />
+      </main>
+      <Footer />
+    </>
   );
 };
 
