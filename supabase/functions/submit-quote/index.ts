@@ -16,6 +16,63 @@ interface QuoteRequest {
   message: string;
 }
 
+// HTML escape function to prevent XSS attacks
+function escapeHtml(text: string): string {
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, (m) => map[m]);
+}
+
+// Simple in-memory rate limiting (resets on function cold start)
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+const RATE_LIMIT_MAX = 5; // Max 5 requests
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000; // Per hour
+
+function isRateLimited(clientIP: string): boolean {
+  const now = Date.now();
+  const record = rateLimitMap.get(clientIP);
+  
+  if (!record || now > record.resetTime) {
+    rateLimitMap.set(clientIP, { count: 1, resetTime: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+  
+  if (record.count >= RATE_LIMIT_MAX) {
+    return true;
+  }
+  
+  record.count++;
+  return false;
+}
+
+// Email validation
+function isValidEmail(email: string): boolean {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email) && email.length <= 255;
+}
+
+// Phone validation (10-15 digits, allowing common separators)
+function isValidPhone(phone: string): boolean {
+  const digitsOnly = phone.replace(/[\s\-\(\)\+\.]/g, '');
+  return digitsOnly.length >= 10 && digitsOnly.length <= 15 && /^\d+$/.test(digitsOnly);
+}
+
+// Name validation
+function isValidName(name: string): boolean {
+  return name.length >= 2 && name.length <= 100;
+}
+
+// Message validation
+function isValidMessage(message: string | undefined): boolean {
+  if (!message) return true;
+  return message.length <= 2000;
+}
+
 const handler = async (req: Request): Promise<Response> => {
   // Handle CORS preflight requests
   if (req.method === "OPTIONS") {
@@ -23,6 +80,22 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
+    // Rate limiting check
+    const clientIP = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 
+                     req.headers.get('x-real-ip') || 
+                     'unknown';
+    
+    if (isRateLimited(clientIP)) {
+      console.warn(`Rate limit exceeded for IP: ${clientIP}`);
+      return new Response(
+        JSON.stringify({ error: "Too many requests. Please try again later." }),
+        {
+          status: 429,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const resendApiKey = Deno.env.get("RESEND_API_KEY")!;
@@ -31,7 +104,7 @@ const handler = async (req: Request): Promise<Response> => {
     
     const { name, email, phone, service, propertyType, message }: QuoteRequest = await req.json();
 
-    console.log("Received quote request:", { name, email, phone, service, propertyType });
+    console.log("Received quote request:", { name: name?.substring(0, 20), email: email?.substring(0, 20), service, propertyType });
 
     // Validate required fields
     if (!name || !email || !phone || !service || !propertyType) {
@@ -44,6 +117,77 @@ const handler = async (req: Request): Promise<Response> => {
         }
       );
     }
+
+    // Validate input formats
+    if (!isValidName(name)) {
+      return new Response(
+        JSON.stringify({ error: "Invalid name format" }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+
+    if (!isValidEmail(email)) {
+      return new Response(
+        JSON.stringify({ error: "Invalid email format" }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+
+    if (!isValidPhone(phone)) {
+      return new Response(
+        JSON.stringify({ error: "Invalid phone number format" }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+
+    if (!isValidMessage(message)) {
+      return new Response(
+        JSON.stringify({ error: "Message is too long" }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+
+    // Validate service and property type against allowed values
+    const allowedServices = ["pressure-washing", "handyman", "painting"];
+    const allowedPropertyTypes = ["commercial", "residential", "strata"];
+
+    if (!allowedServices.includes(service)) {
+      return new Response(
+        JSON.stringify({ error: "Invalid service type" }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+
+    if (!allowedPropertyTypes.includes(propertyType)) {
+      return new Response(
+        JSON.stringify({ error: "Invalid property type" }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json", ...corsHeaders },
+        }
+      );
+    }
+
+    // Sanitize all user inputs for HTML output
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safePhone = escapeHtml(phone);
+    const safeMessage = message ? escapeHtml(message) : '';
 
     // Insert quote into database
     const { data: quote, error: dbError } = await supabase
@@ -88,7 +232,7 @@ const handler = async (req: Request): Promise<Response> => {
     };
     const propertyName = propertyNames[propertyType] || propertyType;
 
-    // Send notification email to business
+    // Send notification email to business (using sanitized values)
     const businessEmailHtml = `
       <!DOCTYPE html>
       <html>
@@ -112,15 +256,15 @@ const handler = async (req: Request): Promise<Response> => {
             <div class="content">
               <div class="field">
                 <div class="label">Name:</div>
-                <div class="value">${name}</div>
+                <div class="value">${safeName}</div>
               </div>
               <div class="field">
                 <div class="label">Email:</div>
-                <div class="value">${email}</div>
+                <div class="value">${safeEmail}</div>
               </div>
               <div class="field">
                 <div class="label">Phone:</div>
-                <div class="value">${phone}</div>
+                <div class="value">${safePhone}</div>
               </div>
               <div class="field">
                 <div class="label">Service Requested:</div>
@@ -130,10 +274,10 @@ const handler = async (req: Request): Promise<Response> => {
                 <div class="label">Property Type:</div>
                 <div class="value">${propertyName}</div>
               </div>
-              ${message ? `
+              ${safeMessage ? `
               <div class="field">
                 <div class="label">Message:</div>
-                <div class="value">${message}</div>
+                <div class="value">${safeMessage}</div>
               </div>
               ` : ""}
             </div>
@@ -145,7 +289,7 @@ const handler = async (req: Request): Promise<Response> => {
       </html>
     `;
 
-    // Send confirmation email to customer
+    // Send confirmation email to customer (using sanitized values)
     const customerEmailHtml = `
       <!DOCTYPE html>
       <html>
@@ -162,7 +306,7 @@ const handler = async (req: Request): Promise<Response> => {
         <body>
           <div class="container">
             <div class="header">
-              <h1>Thank You, ${name}!</h1>
+              <h1>Thank You, ${safeName}!</h1>
             </div>
             <div class="content">
               <p>We have received your quote request for <strong>${serviceName}</strong> services.</p>
@@ -175,7 +319,7 @@ const handler = async (req: Request): Promise<Response> => {
               <ul>
                 <li><strong>Service:</strong> ${serviceName}</li>
                 <li><strong>Property Type:</strong> ${propertyName}</li>
-                ${message ? `<li><strong>Details:</strong> ${message}</li>` : ""}
+                ${safeMessage ? `<li><strong>Details:</strong> ${safeMessage}</li>` : ""}
               </ul>
               
               <p>If you have any urgent questions, feel free to call us at <strong>604-900-7172</strong>.</p>
@@ -202,7 +346,7 @@ const handler = async (req: Request): Promise<Response> => {
         body: JSON.stringify({
           from: "All Done Services <onboarding@resend.dev>",
           to: ["info@alldone-services.ca"],
-          subject: `New Quote Request: ${serviceName} - ${name}`,
+          subject: `New Quote Request: ${serviceName} - ${safeName}`,
           html: businessEmailHtml,
         }),
       });
@@ -257,7 +401,7 @@ const handler = async (req: Request): Promise<Response> => {
   } catch (error: any) {
     console.error("Error processing quote request:", error);
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: "An error occurred processing your request" }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
