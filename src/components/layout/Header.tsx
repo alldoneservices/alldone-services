@@ -5,6 +5,7 @@ import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
+import logo from '@/assets/logo.jpg';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,16 +34,13 @@ const Header = () => {
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-              <span className="text-primary-foreground font-heading font-bold text-lg">AD</span>
-            </div>
-            <div className="hidden sm:block">
-              <span className="font-heading font-bold text-xl text-foreground">All Done</span>
-              <span className="block text-xs text-muted-foreground font-medium -mt-1">Services</span>
-            </div>
+          <Link to="/" className="flex items-center group">
+            <img 
+              src={logo} 
+              alt="All Done Services - Professional Property Care in Vancouver" 
+              className="h-14 w-auto object-contain"
+            />
           </Link>
-
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
