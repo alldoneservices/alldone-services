@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import logo from '@/assets/logo.jpg';
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -11,15 +12,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-accent flex items-center justify-center">
-                <span className="text-accent-foreground font-heading font-bold text-lg">AD</span>
-              </div>
-              <div>
-                <span className="font-heading font-bold text-xl">All Done</span>
-                <span className="block text-xs text-primary-foreground/70 font-medium -mt-1">Services</span>
-              </div>
-            </div>
+            <Link to="/" className="block mb-6">
+              <img 
+                src={logo} 
+                alt="All Done Services - Professional Property Care" 
+                className="h-20 w-auto object-contain bg-card/10 rounded-lg p-2"
+              />
+            </Link>
             <p className="text-primary-foreground/80 leading-relaxed">
               {t('footer.description')}
             </p>
