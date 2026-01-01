@@ -289,7 +289,23 @@ const handler = async (req: Request): Promise<Response> => {
       </html>
     `;
 
-    // Send confirmation email to customer (using sanitized values)
+    // Get service display names for both languages
+    const serviceNamesPt: Record<string, string> = {
+      "pressure-washing": "Lavagem de Alta Pressão",
+      "handyman": "Serviços Gerais",
+      "painting": "Serviços de Pintura",
+    };
+    const serviceNamePt = serviceNamesPt[service] || service;
+
+    // Get property type display names for both languages
+    const propertyNamesPt: Record<string, string> = {
+      "commercial": "Comercial",
+      "residential": "Residencial",
+      "strata": "Condomínio",
+    };
+    const propertyNamePt = propertyNamesPt[propertyType] || propertyType;
+
+    // Send confirmation email to customer (bilingual - English and Portuguese)
     const customerEmailHtml = `
       <!DOCTYPE html>
       <html>
@@ -300,6 +316,8 @@ const handler = async (req: Request): Promise<Response> => {
             .header { background: #001F5B; color: white; padding: 20px; text-align: center; border-radius: 8px 8px 0 0; }
             .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 8px 8px; }
             .highlight { background: #00843D; color: white; padding: 15px; border-radius: 8px; text-align: center; margin: 20px 0; }
+            .divider { border-top: 2px solid #ddd; margin: 30px 0; padding-top: 20px; }
+            .section-title { color: #001F5B; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
             .footer { text-align: center; margin-top: 20px; color: #666; font-size: 12px; }
           </style>
         </head>
@@ -307,8 +325,11 @@ const handler = async (req: Request): Promise<Response> => {
           <div class="container">
             <div class="header">
               <h1>Thank You, ${safeName}!</h1>
+              <p style="margin: 5px 0 0 0; opacity: 0.9;">Obrigado, ${safeName}!</p>
             </div>
             <div class="content">
+              <!-- English Version -->
+              <div class="section-title">🇬🇧 English</div>
               <p>We have received your quote request for <strong>${serviceName}</strong> services.</p>
               
               <div class="highlight">
@@ -325,9 +346,32 @@ const handler = async (req: Request): Promise<Response> => {
               <p>If you have any urgent questions, feel free to call us at <strong>604-900-7172</strong>.</p>
               
               <p>Best regards,<br>The All Done Services Team</p>
+
+              <!-- Divider -->
+              <div class="divider">
+                <!-- Portuguese Version -->
+                <div class="section-title">🇧🇷 Português</div>
+                <p>Recebemos sua solicitação de orçamento para serviços de <strong>${serviceNamePt}</strong>.</p>
+                
+                <div class="highlight">
+                  <p style="margin: 0; font-size: 18px;">Entraremos em contato em até 24 horas!</p>
+                </div>
+                
+                <p>Aqui está um resumo do seu pedido:</p>
+                <ul>
+                  <li><strong>Serviço:</strong> ${serviceNamePt}</li>
+                  <li><strong>Tipo de Propriedade:</strong> ${propertyNamePt}</li>
+                  ${safeMessage ? `<li><strong>Detalhes:</strong> ${safeMessage}</li>` : ""}
+                </ul>
+                
+                <p>Se você tiver alguma dúvida urgente, ligue para <strong>604-900-7172</strong>.</p>
+                
+                <p>Atenciosamente,<br>Equipe All Done Services</p>
+              </div>
             </div>
             <div class="footer">
               <p>All Done Services - One Call, All Done!</p>
+              <p>Uma Ligação, Tudo Resolvido!</p>
               <p>Greater Vancouver Area, BC | 604-900-7172</p>
             </div>
           </div>
