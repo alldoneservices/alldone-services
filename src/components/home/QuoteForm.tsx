@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/select';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { supabase } from '@/integrations/supabase/client';
 
 interface FormData {
   name: string;
@@ -24,7 +25,7 @@ interface FormData {
 }
 
 const QuoteForm = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -57,9 +58,17 @@ const QuoteForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const { data, error } = await supabase.functions.invoke('submit-quote', {
+        body: formData,
+      });
+
+      if (error) {
+        console.error('Error submitting quote:', error);
+        throw error;
+      }
+
+      console.log('Quote submitted successfully:', data);
       setIsSuccess(true);
       toast({
         title: t('quote.success'),
@@ -74,7 +83,8 @@ const QuoteForm = () => {
         propertyType: '',
         message: '',
       });
-    } catch {
+    } catch (error) {
+      console.error('Failed to submit quote:', error);
       toast({
         title: t('quote.error'),
         description: '',
@@ -123,7 +133,7 @@ const QuoteForm = () => {
                   variant="outline"
                   className="mt-4"
                 >
-                  Submit Another Request
+                  {language === 'pt' ? 'Enviar Outra Solicitação' : 'Submit Another Request'}
                 </Button>
               </div>
             ) : (
