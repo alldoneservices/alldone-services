@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Flame, Wrench, Building2, ShieldCheck, Phone } from 'lucide-react';
+import { Flame, Wrench, Building2, ShieldCheck, Phone, Home } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const WhyUs = () => {
@@ -10,36 +10,43 @@ const WhyUs = () => {
       icon: Flame,
       title: language === 'pt' ? 'Lavagem com Água Quente' : 'Hot Pressure Washing',
       description: language === 'pt' 
-        ? 'Melhores resultados para manchas difíceis, graxa e óleo'
-        : 'Better results for tough stains, grease, and oil',
+        ? 'Melhores resultados para manchas difíceis'
+        : 'Better results for tough stains',
+    },
+    {
+      icon: Home,
+      title: language === 'pt' ? 'Pequeno ao Grande' : 'Small to Large',
+      description: language === 'pt'
+        ? 'Casas pequenas a grandes propriedades comerciais'
+        : 'Capable of small homes to large commercial properties',
     },
     {
       icon: Wrench,
       title: language === 'pt' ? 'Equipamento Profissional' : 'Professional Equipment',
       description: language === 'pt'
-        ? 'Equipamento comercial de alta qualidade para resultados superiores'
-        : 'Commercial-grade equipment for superior results',
+        ? 'Equipamento comercial de alta qualidade'
+        : 'Professional commercial-grade equipment',
     },
     {
       icon: Building2,
-      title: language === 'pt' ? 'Experiência Diversificada' : 'Diverse Experience',
+      title: language === 'pt' ? 'Especialistas' : 'Specialists',
       description: language === 'pt'
-        ? 'Experiência em residências, comerciais e condomínios'
-        : 'Residential, commercial & strata experience',
+        ? 'Residencial, comercial e condomínios'
+        : 'Residential, commercial & strata specialists',
     },
     {
       icon: ShieldCheck,
       title: language === 'pt' ? 'Confiável e Segurado' : 'Reliable & Insured',
       description: language === 'pt'
         ? 'Totalmente segurado e orientado aos detalhes'
-        : 'Fully insured and detail-oriented',
+        : 'Reliable, insured and detail-oriented',
     },
     {
       icon: Phone,
       title: language === 'pt' ? 'Uma Ligação' : 'One Call',
       description: language === 'pt'
-        ? 'Cuidado completo da propriedade com uma única ligação'
-        : 'Complete property care with one call',
+        ? 'Cuidado completo da propriedade'
+        : 'One call for complete property care',
     },
   ];
 
@@ -63,7 +70,7 @@ const WhyUs = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -76,7 +83,7 @@ const WhyUs = () => {
               <div className="w-14 h-14 rounded-xl bg-accent mx-auto mb-4 flex items-center justify-center shadow-lg">
                 <feature.icon className="w-7 h-7 text-accent-foreground" />
               </div>
-              <h3 className="font-heading text-lg font-bold text-primary-foreground mb-2">
+              <h3 className="font-heading text-base font-bold text-primary-foreground mb-2">
                 {feature.title}
               </h3>
               <p className="text-primary-foreground/70 text-sm leading-relaxed">

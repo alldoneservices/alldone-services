@@ -3,6 +3,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/home/Hero';
 import Services from '@/components/home/Services';
+import CommercialStrata from '@/components/home/CommercialStrata';
 import WhyUs from '@/components/home/WhyUs';
 import QuoteForm from '@/components/home/QuoteForm';
 import CTA from '@/components/home/CTA';
@@ -26,6 +27,7 @@ const Index = () => {
       <main>
         <Hero />
         <Services />
+        <CommercialStrata />
         <WhyUs />
         <QuoteForm />
         <CTA />

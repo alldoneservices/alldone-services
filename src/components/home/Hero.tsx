@@ -6,13 +6,14 @@ import { useLanguage } from '@/contexts/LanguageContext';
 
 // Import slider images
 import sliderHotPressure from '@/assets/slider-hot-pressure.jpg';
-import sliderDriveway from '@/assets/slider-driveway.jpg';
-import sliderSoftwash from '@/assets/slider-softwash.jpg';
-import sliderPainting from '@/assets/slider-painting.jpg';
-import logo from '@/assets/logo.jpg';
+import sliderStrataBuilding from '@/assets/slider-strata-building.jpg';
+import sliderParkade from '@/assets/slider-parkade.jpg';
+import sliderTruckWash from '@/assets/slider-truck-wash.jpg';
+import sliderGutterCleaning from '@/assets/slider-gutter-cleaning.jpg';
+import sliderSoftwashPro from '@/assets/slider-softwash-pro.jpg';
 
 const Hero = () => {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
@@ -21,16 +22,24 @@ const Hero = () => {
       alt: 'Hot pressure washing with visible steam',
     },
     {
-      image: sliderDriveway,
-      alt: 'Driveway and concrete cleaning',
+      image: sliderStrataBuilding,
+      alt: 'Pressure washing multi-storey strata building',
     },
     {
-      image: sliderSoftwash,
-      alt: 'Soft washing on house siding',
+      image: sliderParkade,
+      alt: 'Commercial parkade and walkway cleaning',
     },
     {
-      image: sliderPainting,
-      alt: 'Professional exterior painting',
+      image: sliderTruckWash,
+      alt: 'Truck and heavy equipment washing',
+    },
+    {
+      image: sliderGutterCleaning,
+      alt: 'Professional gutter cleaning service',
+    },
+    {
+      image: sliderSoftwashPro,
+      alt: 'Professional soft washing on residential siding',
     },
   ];
 
@@ -106,23 +115,6 @@ const Hero = () => {
       {/* Content */}
       <div className="container mx-auto px-4 pt-32 pb-24 relative z-10">
         <div className="max-w-4xl">
-          {/* Logo and Slogan */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col items-start mb-8"
-          >
-            <img 
-              src={logo} 
-              alt="All Done Services" 
-              className="h-24 md:h-32 lg:h-40 w-auto object-contain mb-4 rounded-lg"
-            />
-            <span className="text-accent font-heading font-bold text-lg md:text-xl tracking-wide uppercase">
-              {t('hero.tagline')}
-            </span>
-          </motion.div>
-
           {/* Main Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
