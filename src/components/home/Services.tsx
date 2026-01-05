@@ -17,10 +17,10 @@ const Services = () => {
   const services = [
     {
       image: servicePressure,
-      title: language === 'pt' ? 'Lavagem de Alta Pressão' : 'Hot & Cold Pressure Washing',
+      title: language === 'pt' ? 'Quente & Frio • Pressão & Lavagem Suave' : 'Hot & Cold • Pressure & Soft Washing',
       description: language === 'pt' 
-        ? 'Limpeza profunda para óleo, graxa e acúmulo pesado'
-        : 'Deep cleaning for oil, grease and heavy buildup',
+        ? 'O método certo para cada superfície'
+        : 'The right method for every surface',
       href: '/services/pressure-washing',
     },
     {

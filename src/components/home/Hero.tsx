@@ -5,12 +5,14 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 // Import slider images - realistic small-to-medium service company visuals
-import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
+import sliderDriveway from '@/assets/slider-driveway.jpg';
 import sliderHouseWashing from '@/assets/slider-house-washing.jpg';
 import sliderGutterResidential from '@/assets/slider-gutter-residential.jpg';
 import sliderGarbageRoom from '@/assets/slider-garbage-room.jpg';
 import sliderStrata from '@/assets/slider-strata-realistic.jpg';
 import sliderHotSteam from '@/assets/slider-hot-steam.jpg';
+import sliderPainting from '@/assets/slider-painting.jpg';
+import sliderParkade from '@/assets/slider-parkade.jpg';
 
 const Hero = () => {
   const { language } = useLanguage();
@@ -23,19 +25,23 @@ const Hero = () => {
     },
     {
       image: sliderDriveway,
-      alt: 'Two workers pressure washing residential driveway and garage',
+      alt: 'Professional surface cleaner pressure washing residential driveway',
     },
     {
       image: sliderHouseWashing,
       alt: 'Professional house exterior soft washing service',
     },
     {
+      image: sliderParkade,
+      alt: 'Two workers cleaning enclosed parking garage parkade',
+    },
+    {
       image: sliderGutterResidential,
       alt: 'Seasonal gutter cleaning on residential home',
     },
     {
-      image: sliderGarbageRoom,
-      alt: 'Garbage room and dumpster area pressure washing',
+      image: sliderPainting,
+      alt: 'Professional exterior house painting service',
     },
     {
       image: sliderStrata,
@@ -116,6 +122,15 @@ const Hero = () => {
       <div className="container mx-auto px-4 pt-32 pb-24 relative z-10">
         <div className="max-w-4xl">
           {/* Main Headline */}
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.05 }}
+            className="text-accent font-heading font-bold text-lg md:text-xl uppercase tracking-wider mb-2 drop-shadow-md"
+          >
+            {language === 'pt' ? 'CUIDADO DE PROPRIEDADE' : 'PROPERTY CARE'}
+          </motion.p>
+          
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -123,40 +138,27 @@ const Hero = () => {
             className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-4 drop-shadow-lg"
             style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.5)' }}
           >
-            {language === 'pt' ? 'Cuidado Completo da Propriedade' : 'Complete Property Care'}
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-white font-heading font-semibold text-xl md:text-2xl mb-3 drop-shadow-md"
-          >
             {language === 'pt' 
               ? 'Residencial, Comercial e Condomínios' 
               : 'Residential, Commercial & Strata'}
-          </motion.p>
+          </motion.h1>
 
-          {/* Hot Pressure Washing Feature */}
+          {/* Services Tagline */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-8"
           >
-            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-accent/20 border border-accent/40 backdrop-blur-sm">
-              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-              <span className="text-accent font-semibold text-sm md:text-base">
-                {language === 'pt' 
-                  ? 'Lavagem de Alta Pressão com Água Quente Disponível' 
-                  : 'Hot Pressure Washing Available'}
-              </span>
-            </div>
-            <p className="text-white/70 mt-3 text-base md:text-lg max-w-xl">
+            <p className="text-white font-heading font-semibold text-xl md:text-2xl mb-2">
+              {language === 'pt' 
+                ? 'Quente & Frio • Pressão & Lavagem Suave' 
+                : 'Hot & Cold • Pressure & Soft Washing'}
+            </p>
+            <p className="text-white/70 text-base md:text-lg">
               {language === 'pt'
-                ? 'Limpeza poderosa para graxa, óleo e manchas difíceis'
-                : 'Powerful cleaning for grease, oil & tough stains'}
+                ? 'O método certo para cada superfície'
+                : 'The right method for every surface'}
             </p>
           </motion.div>
 

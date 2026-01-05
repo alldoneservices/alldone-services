@@ -7,6 +7,13 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
 import logo from '@/assets/logo.jpg';
 
+// Service menu images
+import servicePressure from '@/assets/service-pressure-new.jpg';
+import serviceHandyman from '@/assets/service-handyman-new.jpg';
+import servicePainting from '@/assets/service-painting-new.jpg';
+import serviceGutter from '@/assets/service-gutter-new.jpg';
+import serviceSoftwash from '@/assets/service-softwash-new.jpg';
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -15,16 +22,22 @@ const Header = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
+  const [hoveredService, setHoveredService] = useState<string | null>(null);
+
+  const serviceMenuItems = [
+    { href: '/services/pressure-washing', label: t('nav.pressureWashing'), image: servicePressure },
+    { href: '/services/soft-washing', label: language === 'pt' ? 'Lavagem Suave' : 'Soft Washing', image: serviceSoftwash },
+    { href: '/services/gutter-cleaning', label: language === 'pt' ? 'Limpeza de Calhas' : 'Gutter Cleaning', image: serviceGutter },
+    { href: '/services/painting', label: t('nav.painting'), image: servicePainting },
+    { href: '/services/handyman', label: t('nav.handyman'), image: serviceHandyman },
+  ];
+
   const navLinks = [
     { href: '/', label: t('nav.home') },
     {
       href: '/services',
       label: t('nav.services'),
-      children: [
-        { href: '/services/pressure-washing', label: t('nav.pressureWashing') },
-        { href: '/services/handyman', label: t('nav.handyman') },
-        { href: '/services/painting', label: t('nav.painting') },
-      ],
+      children: serviceMenuItems,
     },
     { href: '/contact', label: t('nav.contact') },
   ];
@@ -86,20 +99,51 @@ const Header = () => {
                         transition={{ duration: 0.2 }}
                         className="absolute top-full left-0 pt-2"
                         onMouseEnter={() => setServicesOpen(true)}
-                        onMouseLeave={() => setServicesOpen(false)}
+                        onMouseLeave={() => {
+                          setServicesOpen(false);
+                          setHoveredService(null);
+                        }}
                       >
-                        <div className="bg-card rounded-xl shadow-lg border border-border overflow-hidden min-w-[220px]">
-                          {link.children.map((child) => (
-                            <Link
-                              key={child.href}
-                              to={child.href}
-                              className={`block px-4 py-3 font-medium transition-colors hover:bg-muted ${
-                                isActive(child.href) ? 'text-primary bg-muted' : 'text-foreground'
-                              }`}
-                            >
-                              {child.label}
-                            </Link>
-                          ))}
+                        <div className="bg-card rounded-xl shadow-lg border border-border overflow-hidden flex">
+                          {/* Service Links */}
+                          <div className="min-w-[220px]">
+                            {link.children.map((child) => (
+                              <Link
+                                key={child.href}
+                                to={child.href}
+                                onMouseEnter={() => setHoveredService(child.href)}
+                                className={`block px-4 py-3 font-medium transition-colors hover:bg-muted ${
+                                  isActive(child.href) ? 'text-primary bg-muted' : 'text-foreground'
+                                }`}
+                              >
+                                {child.label}
+                              </Link>
+                            ))}
+                          </div>
+                          {/* Service Image Preview */}
+                          <div className="w-48 h-auto overflow-hidden">
+                            <AnimatePresence mode="wait">
+                              {hoveredService && (
+                                <motion.img
+                                  key={hoveredService}
+                                  initial={{ opacity: 0 }}
+                                  animate={{ opacity: 1 }}
+                                  exit={{ opacity: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  src={link.children.find(c => c.href === hoveredService)?.image}
+                                  alt="Service preview"
+                                  className="w-full h-full object-cover"
+                                />
+                              )}
+                            </AnimatePresence>
+                            {!hoveredService && (
+                              <img
+                                src={link.children[0]?.image}
+                                alt="Service preview"
+                                className="w-full h-full object-cover"
+                              />
+                            )}
+                          </div>
                         </div>
                       </motion.div>
                     )}
