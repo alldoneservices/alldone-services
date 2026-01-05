@@ -1,35 +1,50 @@
 import { motion } from 'framer-motion';
-import { Award, Shield, BadgeCheck, DollarSign } from 'lucide-react';
+import { Flame, Wrench, Building2, ShieldCheck, Phone } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const WhyUs = () => {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
 
   const features = [
     {
-      icon: Award,
-      title: t('why.experience'),
-      description: t('why.experienceDesc'),
+      icon: Flame,
+      title: language === 'pt' ? 'Lavagem com Água Quente' : 'Hot Pressure Washing',
+      description: language === 'pt' 
+        ? 'Melhores resultados para manchas difíceis, graxa e óleo'
+        : 'Better results for tough stains, grease, and oil',
     },
     {
-      icon: BadgeCheck,
-      title: t('why.quality'),
-      description: t('why.qualityDesc'),
+      icon: Wrench,
+      title: language === 'pt' ? 'Equipamento Profissional' : 'Professional Equipment',
+      description: language === 'pt'
+        ? 'Equipamento comercial de alta qualidade para resultados superiores'
+        : 'Commercial-grade equipment for superior results',
     },
     {
-      icon: Shield,
-      title: t('why.licensed'),
-      description: t('why.licensedDesc'),
+      icon: Building2,
+      title: language === 'pt' ? 'Experiência Diversificada' : 'Diverse Experience',
+      description: language === 'pt'
+        ? 'Experiência em residências, comerciais e condomínios'
+        : 'Residential, commercial & strata experience',
     },
     {
-      icon: DollarSign,
-      title: t('why.affordable'),
-      description: t('why.affordableDesc'),
+      icon: ShieldCheck,
+      title: language === 'pt' ? 'Confiável e Segurado' : 'Reliable & Insured',
+      description: language === 'pt'
+        ? 'Totalmente segurado e orientado aos detalhes'
+        : 'Fully insured and detail-oriented',
+    },
+    {
+      icon: Phone,
+      title: language === 'pt' ? 'Uma Ligação' : 'One Call',
+      description: language === 'pt'
+        ? 'Cuidado completo da propriedade com uma única ligação'
+        : 'Complete property care with one call',
     },
   ];
 
   return (
-    <section className="py-24 bg-muted/50">
+    <section className="py-24 bg-primary">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -38,12 +53,17 @@ const WhyUs = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            {t('why.title')}
+          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-primary-foreground mb-4">
+            {language === 'pt' ? 'Por Que Nos Escolher?' : 'Why Choose Us?'}
           </h2>
+          <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto">
+            {language === 'pt'
+              ? 'Somos especialistas em cuidados de propriedade na região de Vancouver'
+              : 'We are property care specialists in the Greater Vancouver Area'}
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -51,15 +71,15 @@ const WhyUs = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center"
+              className="text-center p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all"
             >
-              <div className="w-16 h-16 rounded-2xl bg-primary mx-auto mb-6 flex items-center justify-center shadow-lg">
-                <feature.icon className="w-8 h-8 text-primary-foreground" />
+              <div className="w-14 h-14 rounded-xl bg-accent mx-auto mb-4 flex items-center justify-center shadow-lg">
+                <feature.icon className="w-7 h-7 text-accent-foreground" />
               </div>
-              <h3 className="font-heading text-xl font-bold text-foreground mb-3">
+              <h3 className="font-heading text-lg font-bold text-primary-foreground mb-2">
                 {feature.title}
               </h3>
-              <p className="text-muted-foreground">
+              <p className="text-primary-foreground/70 text-sm leading-relaxed">
                 {feature.description}
               </p>
             </motion.div>

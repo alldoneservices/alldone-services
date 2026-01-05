@@ -10,7 +10,7 @@ import logo from '@/assets/logo.jpg';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
@@ -30,25 +30,34 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-card/95 backdrop-blur-md border-b border-border shadow-sm">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-primary/95 backdrop-blur-md border-b border-primary-foreground/10 shadow-lg">
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center group">
+          {/* Logo and Slogan */}
+          <Link to="/" className="flex items-center gap-4 group">
             <img 
               src={logo} 
               alt="All Done Services - Professional Property Care in Vancouver" 
-              className="h-14 w-auto object-contain"
+              className="h-14 md:h-16 w-auto object-contain rounded-lg"
             />
+            <div className="hidden sm:flex flex-col">
+              <span className="text-primary-foreground font-heading font-bold text-sm md:text-base leading-tight">
+                All Done Services
+              </span>
+              <span className="text-accent text-xs md:text-sm font-medium">
+                {language === 'pt' ? 'Uma Ligação, Tudo Resolvido!' : 'One Call, All Done!'}
+              </span>
+            </div>
           </Link>
+
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <div key={link.href} className="relative group">
                 {link.children ? (
                   <button
-                    className={`flex items-center gap-1 font-medium transition-colors hover:text-primary ${
-                      link.children.some(child => isActive(child.href)) ? 'text-primary' : 'text-foreground'
+                    className={`flex items-center gap-1 font-medium transition-colors hover:text-accent ${
+                      link.children.some(child => isActive(child.href)) ? 'text-accent' : 'text-primary-foreground'
                     }`}
                     onMouseEnter={() => setServicesOpen(true)}
                     onMouseLeave={() => setServicesOpen(false)}
@@ -59,8 +68,8 @@ const Header = () => {
                 ) : (
                   <Link
                     to={link.href}
-                    className={`font-medium transition-colors hover:text-primary ${
-                      isActive(link.href) ? 'text-primary' : 'text-foreground'
+                    className={`font-medium transition-colors hover:text-accent ${
+                      isActive(link.href) ? 'text-accent' : 'text-primary-foreground'
                     }`}
                   >
                     {link.label}
@@ -105,7 +114,7 @@ const Header = () => {
             <LanguageSwitcher />
             <a
               href="tel:604-900-7172"
-              className="flex items-center gap-2 text-foreground hover:text-primary transition-colors"
+              className="flex items-center gap-2 text-primary-foreground hover:text-accent transition-colors"
             >
               <Phone className="w-5 h-5" />
               <span className="font-semibold">604-900-7172</span>
@@ -120,7 +129,7 @@ const Header = () => {
             <LanguageSwitcher />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-foreground"
+              className="p-2 text-primary-foreground"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -136,7 +145,7 @@ const Header = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden overflow-hidden"
+              className="lg:hidden overflow-hidden bg-card rounded-b-2xl"
             >
               <div className="py-4 space-y-2">
                 {navLinks.map((link) => (
