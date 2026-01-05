@@ -4,13 +4,13 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-// Import slider images
-import sliderHotPressure from '@/assets/slider-hot-pressure.jpg';
-import sliderStrataBuilding from '@/assets/slider-strata-building.jpg';
-import sliderParkade from '@/assets/slider-parkade.jpg';
-import sliderTruckWash from '@/assets/slider-truck-wash.jpg';
-import sliderGutterCleaning from '@/assets/slider-gutter-cleaning.jpg';
-import sliderSoftwashPro from '@/assets/slider-softwash-pro.jpg';
+// Import slider images - realistic small-to-medium service company visuals
+import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
+import sliderHouseWashing from '@/assets/slider-house-washing.jpg';
+import sliderGutterResidential from '@/assets/slider-gutter-residential.jpg';
+import sliderGarbageRoom from '@/assets/slider-garbage-room.jpg';
+import sliderStrata from '@/assets/slider-strata-realistic.jpg';
+import sliderHotSteam from '@/assets/slider-hot-steam.jpg';
 
 const Hero = () => {
   const { language } = useLanguage();
@@ -18,28 +18,28 @@ const Hero = () => {
 
   const slides = [
     {
-      image: sliderHotPressure,
-      alt: 'Hot pressure washing with visible steam',
+      image: sliderHotSteam,
+      alt: 'Hot pressure washing with visible steam cleaning oil stains',
     },
     {
-      image: sliderStrataBuilding,
-      alt: 'Pressure washing multi-storey strata building',
+      image: sliderDriveway,
+      alt: 'Two workers pressure washing residential driveway and garage',
     },
     {
-      image: sliderParkade,
-      alt: 'Commercial parkade and walkway cleaning',
+      image: sliderHouseWashing,
+      alt: 'Professional house exterior soft washing service',
     },
     {
-      image: sliderTruckWash,
-      alt: 'Truck and heavy equipment washing',
+      image: sliderGutterResidential,
+      alt: 'Seasonal gutter cleaning on residential home',
     },
     {
-      image: sliderGutterCleaning,
-      alt: 'Professional gutter cleaning service',
+      image: sliderGarbageRoom,
+      alt: 'Garbage room and dumpster area pressure washing',
     },
     {
-      image: sliderSoftwashPro,
-      alt: 'Professional soft washing on residential siding',
+      image: sliderStrata,
+      alt: 'Strata building exterior cleaning with professional equipment',
     },
   ];
 

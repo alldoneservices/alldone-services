@@ -4,12 +4,12 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-// Import service images
-import servicePressure from '@/assets/service-pressure.jpg';
-import serviceSoftwash from '@/assets/service-softwash.jpg';
-import serviceGutter from '@/assets/service-gutter.jpg';
-import servicePainting from '@/assets/service-painting.jpg';
-import serviceHandyman from '@/assets/service-handyman.jpg';
+// Import service images - realistic small-to-medium service company visuals
+import servicePressure from '@/assets/service-pressure-new.jpg';
+import serviceSoftwash from '@/assets/service-softwash-new.jpg';
+import serviceGutter from '@/assets/service-gutter-new.jpg';
+import servicePainting from '@/assets/service-painting-new.jpg';
+import serviceHandyman from '@/assets/service-handyman-new.jpg';
 
 const Services = () => {
   const { language } = useLanguage();
