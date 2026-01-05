@@ -13,20 +13,20 @@ import Footer from '@/components/layout/Footer';
 import ServiceImageSlider from '@/components/services/ServiceImageSlider';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
 
-// Import slider images
-import sliderStrataRealistic from '@/assets/slider-strata-realistic.jpg';
-import sliderStrataBuilding from '@/assets/slider-strata-building.jpg';
-import sliderParkade from '@/assets/slider-parkade.jpg';
-import sliderTruckWash from '@/assets/slider-truck-wash.jpg';
+// Import slider images - brand-safe, realistic
+import sliderSoftwashBuilding from '@/assets/slider-softwash-building.jpg';
+import sliderParkade from '@/assets/slider-parkade-clean.jpg';
+import sliderHotWash from '@/assets/slider-hot-wash-clean.jpg';
+import sliderGarbageClean from '@/assets/slider-garbage-clean.jpg';
 
 const CommercialStrata = () => {
   const { language } = useLanguage();
 
   const sliderImages = [
-    { src: sliderStrataRealistic, alt: 'Multi-storey strata building pressure washing' },
-    { src: sliderStrataBuilding, alt: 'Commercial building exterior cleaning' },
+    { src: sliderSoftwashBuilding, alt: 'Multi-storey strata building washing' },
     { src: sliderParkade, alt: 'Parkade and common area cleaning' },
-    { src: sliderTruckWash, alt: 'Fleet and commercial vehicle washing' },
+    { src: sliderHotWash, alt: 'Commercial concrete cleaning' },
+    { src: sliderGarbageClean, alt: 'Building garbage room cleaning' },
   ];
 
   const services = [

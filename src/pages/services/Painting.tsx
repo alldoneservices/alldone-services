@@ -13,20 +13,20 @@ import Footer from '@/components/layout/Footer';
 import ServiceImageSlider from '@/components/services/ServiceImageSlider';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
 
-// Import slider images for painting
-import sliderPainting from '@/assets/slider-painting.jpg';
-import servicePainting from '@/assets/service-painting-new.jpg';
+// Import slider images - brand-safe, realistic painting visuals
+import sliderPaintingInterior from '@/assets/slider-painting-interior.jpg';
+import sliderPaintingExterior from '@/assets/slider-painting-exterior.jpg';
 import sliderHouseWashing from '@/assets/slider-house-washing.jpg';
-import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
+import sliderHandymanTV from '@/assets/slider-handyman-tv.jpg';
 
 const Painting = () => {
   const { t, language } = useLanguage();
 
   const sliderImages = [
-    { src: sliderPainting, alt: 'Professional interior and exterior painting' },
-    { src: servicePainting, alt: 'Commercial and residential painting services' },
-    { src: sliderHouseWashing, alt: 'House exterior preparation and painting' },
-    { src: sliderDriveway, alt: 'Garage and property painting' },
+    { src: sliderPaintingInterior, alt: 'Professional interior wall painting' },
+    { src: sliderPaintingExterior, alt: 'Exterior house painting on ladder' },
+    { src: sliderHouseWashing, alt: 'House exterior preparation' },
+    { src: sliderHandymanTV, alt: 'Interior home improvements' },
   ];
 
   const services = [

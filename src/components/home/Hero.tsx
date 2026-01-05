@@ -4,15 +4,15 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-// Import slider images - realistic small-to-medium service company visuals
-import sliderDriveway from '@/assets/slider-driveway.jpg';
+// Import slider images - brand-safe, realistic service visuals
+import sliderDriveway from '@/assets/slider-driveway-clean.jpg';
 import sliderHouseWashing from '@/assets/slider-house-washing.jpg';
-import sliderGutterResidential from '@/assets/slider-gutter-residential.jpg';
-import sliderGarbageRoom from '@/assets/slider-garbage-room.jpg';
-import sliderStrata from '@/assets/slider-strata-realistic.jpg';
-import sliderHotSteam from '@/assets/slider-hot-steam.jpg';
-import sliderPainting from '@/assets/slider-painting.jpg';
-import sliderParkade from '@/assets/slider-parkade.jpg';
+import sliderGutterClean from '@/assets/slider-gutter-clean.jpg';
+import sliderGarbageClean from '@/assets/slider-garbage-clean.jpg';
+import sliderSoftwashBuilding from '@/assets/slider-softwash-building.jpg';
+import sliderHotWash from '@/assets/slider-hot-wash-clean.jpg';
+import sliderPaintingExterior from '@/assets/slider-painting-exterior.jpg';
+import sliderParkade from '@/assets/slider-parkade-clean.jpg';
 
 const Hero = () => {
   const { language } = useLanguage();
@@ -20,8 +20,8 @@ const Hero = () => {
 
   const slides = [
     {
-      image: sliderHotSteam,
-      alt: 'Hot pressure washing with visible steam cleaning oil stains',
+      image: sliderHotWash,
+      alt: 'Hot pressure washing with visible steam cleaning commercial concrete',
     },
     {
       image: sliderDriveway,
@@ -36,16 +36,20 @@ const Hero = () => {
       alt: 'Two workers cleaning enclosed parking garage parkade',
     },
     {
-      image: sliderGutterResidential,
-      alt: 'Seasonal gutter cleaning on residential home',
+      image: sliderGutterClean,
+      alt: 'Seasonal gutter cleaning on residential home with fall leaves',
     },
     {
-      image: sliderPainting,
+      image: sliderPaintingExterior,
       alt: 'Professional exterior house painting service',
     },
     {
-      image: sliderStrata,
-      alt: 'Strata building exterior cleaning with professional equipment',
+      image: sliderSoftwashBuilding,
+      alt: 'Strata building exterior soft washing with professional equipment',
+    },
+    {
+      image: sliderGarbageClean,
+      alt: 'Commercial garbage room cleaning service',
     },
   ];
 

@@ -13,20 +13,20 @@ import Footer from '@/components/layout/Footer';
 import ServiceImageSlider from '@/components/services/ServiceImageSlider';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
 
-// Import slider images for pressure washing
-import sliderHotSteam from '@/assets/slider-hot-steam.jpg';
-import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
-import sliderHotPressure from '@/assets/slider-hot-pressure-realistic.jpg';
-import sliderStrataRealistic from '@/assets/slider-strata-realistic.jpg';
+// Import slider images - brand-safe, realistic
+import sliderHotWash from '@/assets/slider-hot-wash-clean.jpg';
+import sliderDriveway from '@/assets/slider-driveway-clean.jpg';
+import sliderParkade from '@/assets/slider-parkade-clean.jpg';
+import sliderSoftwashBuilding from '@/assets/slider-softwash-building.jpg';
 
 const PressureWashing = () => {
   const { t, language } = useLanguage();
 
   const sliderImages = [
-    { src: sliderHotSteam, alt: 'Hot pressure washing with visible steam cleaning oil stains' },
-    { src: sliderDriveway, alt: 'Residential driveway and garage pressure washing' },
-    { src: sliderHotPressure, alt: 'Hot pressure washing concrete surfaces' },
-    { src: sliderStrataRealistic, alt: 'Building exterior pressure washing' },
+    { src: sliderHotWash, alt: 'Hot pressure washing with visible steam' },
+    { src: sliderDriveway, alt: 'Residential driveway surface cleaner pressure washing' },
+    { src: sliderParkade, alt: 'Parkade and garage cleaning service' },
+    { src: sliderSoftwashBuilding, alt: 'Building exterior soft washing' },
   ];
 
   const services = [
