@@ -1,57 +1,137 @@
-import { motion } from 'framer-motion';
-import { Phone, ArrowRight, CheckCircle } from 'lucide-react';
+import { useState, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-const Hero = () => {
-  const { t } = useLanguage();
+// Import slider images
+import sliderHotPressure from '@/assets/slider-hot-pressure.jpg';
+import sliderDriveway from '@/assets/slider-driveway.jpg';
+import sliderSoftwash from '@/assets/slider-softwash.jpg';
+import sliderPainting from '@/assets/slider-painting.jpg';
+import logo from '@/assets/logo.jpg';
 
-  const benefits = [
-    'Commercial',
-    'Residential',
-    'Strata',
+const Hero = () => {
+  const { t, language } = useLanguage();
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      image: sliderHotPressure,
+      alt: 'Hot pressure washing with visible steam',
+    },
+    {
+      image: sliderDriveway,
+      alt: 'Driveway and concrete cleaning',
+    },
+    {
+      image: sliderSoftwash,
+      alt: 'Soft washing on house siding',
+    },
+    {
+      image: sliderPainting,
+      alt: 'Professional exterior painting',
+    },
   ];
 
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  }, [slides.length]);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  }, [slides.length]);
+
+  // Auto-advance slides
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
+
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-primary">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-hero-pattern opacity-30" />
-      
-      {/* Gradient Overlay */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(135deg, hsl(220 100% 18% / 0.95) 0%, hsl(220 80% 22% / 0.9) 50%, hsl(152 100% 26% / 0.85) 100%)',
-        }}
-      />
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Image Slider Background */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentSlide}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+          className="absolute inset-0"
+        >
+          <img
+            src={slides[currentSlide].image}
+            alt={slides[currentSlide].alt}
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+      </AnimatePresence>
 
-      {/* Decorative Elements */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-accent/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+      {/* Dark Overlay for readability */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
 
-      <div className="container mx-auto px-4 pt-32 pb-20 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Tagline Badge */}
+      {/* Slider Navigation */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
+        aria-label="Previous slide"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center text-white hover:bg-white/20 transition-all"
+        aria-label="Next slide"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+
+      {/* Slide Indicators */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`w-3 h-3 rounded-full transition-all ${
+              index === currentSlide
+                ? 'bg-white w-8'
+                : 'bg-white/40 hover:bg-white/60'
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Content */}
+      <div className="container mx-auto px-4 pt-32 pb-24 relative z-10">
+        <div className="max-w-4xl">
+          {/* Logo and Slogan */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/30 mb-8"
+            className="flex flex-col items-start mb-8"
           >
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-            <span className="text-accent-foreground font-semibold text-sm tracking-wide">
+            <img 
+              src={logo} 
+              alt="All Done Services" 
+              className="h-24 md:h-32 lg:h-40 w-auto object-contain mb-4 rounded-lg"
+            />
+            <span className="text-accent font-heading font-bold text-lg md:text-xl tracking-wide uppercase">
               {t('hero.tagline')}
             </span>
           </motion.div>
 
-          {/* Main Title */}
+          {/* Main Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight mb-6"
+            className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-4 drop-shadow-lg"
+            style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.5)' }}
           >
-            {t('hero.title')}
+            {language === 'pt' ? 'Cuidado Completo da Propriedade' : 'Complete Property Care'}
           </motion.h1>
 
           {/* Subtitle */}
@@ -59,91 +139,49 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-accent font-heading font-semibold text-lg md:text-xl tracking-wider mb-6"
+            className="text-white font-heading font-semibold text-xl md:text-2xl mb-3 drop-shadow-md"
           >
-            {t('hero.subtitle')}
+            {language === 'pt' 
+              ? 'Residencial, Comercial e Condomínios' 
+              : 'Residential, Commercial & Strata'}
           </motion.p>
 
-          {/* Description */}
-          <motion.p
+          {/* Hot Pressure Washing Feature */}
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="mb-8"
           >
-            {t('hero.description')}
-          </motion.p>
+            <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-accent/20 border border-accent/40 backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              <span className="text-accent font-semibold text-sm md:text-base">
+                {language === 'pt' 
+                  ? 'Lavagem de Alta Pressão com Água Quente Disponível' 
+                  : 'Hot Pressure Washing Available'}
+              </span>
+            </div>
+            <p className="text-white/70 mt-3 text-base md:text-lg max-w-xl">
+              {language === 'pt'
+                ? 'Limpeza poderosa para graxa, óleo e manchas difíceis'
+                : 'Powerful cleaning for grease, oil & tough stains'}
+            </p>
+          </motion.div>
 
-          {/* Benefits */}
+          {/* CTA Button */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-wrap justify-center gap-6 mb-10"
           >
-            {benefits.map((benefit, index) => (
-              <div key={index} className="flex items-center gap-2 text-primary-foreground/90">
-                <CheckCircle className="w-5 h-5 text-accent" />
-                <span className="font-medium">{benefit}</span>
-              </div>
-            ))}
-          </motion.div>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Button asChild variant="hero" size="xl">
+            <Button asChild variant="hero" size="xl" className="text-lg px-8 py-6">
               <a href="#quote">
-                {t('hero.cta')}
-                <ArrowRight className="w-5 h-5 ml-1" />
+                {language === 'pt' ? 'Orçamento Grátis' : 'Get a Free Estimate'}
+                <ArrowRight className="w-5 h-5 ml-2" />
               </a>
             </Button>
-            <Button asChild variant="heroOutline" size="xl">
-              <a href="tel:604-900-7172">
-                <Phone className="w-5 h-5 mr-1" />
-                {t('hero.callNow')}
-              </a>
-            </Button>
-          </motion.div>
-
-          {/* Phone Number Display */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-            className="mt-12"
-          >
-            <a
-              href="tel:604-900-7172"
-              className="inline-flex items-center gap-3 text-primary-foreground/90 hover:text-accent transition-colors group"
-            >
-              <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-colors">
-                <Phone className="w-6 h-6 text-accent" />
-              </div>
-              <span className="font-heading text-2xl font-bold">604-900-7172</span>
-            </a>
           </motion.div>
         </div>
-      </div>
-
-      {/* Bottom Wave */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg
-          viewBox="0 0 1440 120"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-auto"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z"
-            fill="hsl(210 20% 98%)"
-          />
-        </svg>
       </div>
     </section>
   );

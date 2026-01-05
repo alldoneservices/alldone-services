@@ -1,33 +1,50 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Droplets, Wrench, Paintbrush, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
+// Import service images
+import servicePressure from '@/assets/service-pressure.jpg';
+import serviceSoftwash from '@/assets/service-softwash.jpg';
+import servicePainting from '@/assets/service-painting.jpg';
+import serviceHandyman from '@/assets/service-handyman.jpg';
+
 const Services = () => {
-  const { t } = useLanguage();
+  const { language } = useLanguage();
 
   const services = [
     {
-      icon: Droplets,
-      title: t('services.pressure.title'),
-      description: t('services.pressure.description'),
+      image: servicePressure,
+      title: language === 'pt' ? 'Lavagem de Alta Pressão' : 'Hot & Cold Pressure Washing',
+      description: language === 'pt' 
+        ? 'Equipamento comercial de alta pressão para remover sujeira, graxa e manchas de qualquer superfície.'
+        : 'Commercial-grade hot and cold pressure washing to remove dirt, grease, and stains from any surface.',
       href: '/services/pressure-washing',
-      color: 'from-blue-500 to-cyan-400',
     },
     {
-      icon: Wrench,
-      title: t('services.handyman.title'),
-      description: t('services.handyman.description'),
-      href: '/services/handyman',
-      color: 'from-amber-500 to-orange-400',
+      image: serviceSoftwash,
+      title: language === 'pt' ? 'Lavagem Suave' : 'Soft Washing',
+      description: language === 'pt'
+        ? 'Limpeza suave para superfícies delicadas como revestimentos, telhados e decks.'
+        : 'Gentle low-pressure cleaning for delicate surfaces like siding, roofs, and decks.',
+      href: '/services/pressure-washing',
     },
     {
-      icon: Paintbrush,
-      title: t('services.painting.title'),
-      description: t('services.painting.description'),
+      image: servicePainting,
+      title: language === 'pt' ? 'Serviços de Pintura' : 'Painting Services',
+      description: language === 'pt'
+        ? 'Pintura profissional interna e externa com materiais premium e acabamento especializado.'
+        : 'Professional interior and exterior painting with premium materials and expert craftsmanship.',
       href: '/services/painting',
-      color: 'from-emerald-500 to-teal-400',
+    },
+    {
+      image: serviceHandyman,
+      title: language === 'pt' ? 'Manutenção de Propriedades' : 'Handyman & Property Care',
+      description: language === 'pt'
+        ? 'Serviços completos de manutenção e reparos para propriedades residenciais e comerciais.'
+        : 'Complete property maintenance and repair services for residential and commercial properties.',
+      href: '/services/handyman',
     },
   ];
 
@@ -36,7 +53,7 @@ const Services = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
       },
     },
   };
@@ -62,10 +79,12 @@ const Services = () => {
           className="text-center mb-16"
         >
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            {t('services.title')}
+            {language === 'pt' ? 'Nossos Serviços' : 'Our Services'}
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            {t('services.subtitle')}
+            {language === 'pt' 
+              ? 'Soluções completas de cuidado de propriedade para todas as necessidades'
+              : 'Comprehensive property care solutions for every need'}
           </p>
         </motion.div>
 
@@ -75,7 +94,7 @@ const Services = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {services.map((service, index) => (
             <motion.div
@@ -83,33 +102,37 @@ const Services = () => {
               variants={itemVariants}
               className="group"
             >
-              <div className="relative bg-card rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-500 border border-border overflow-hidden h-full">
-                {/* Background Gradient on Hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-                
-                {/* Icon */}
-                <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                  <service.icon className="w-8 h-8 text-primary-foreground" />
+              <div className="relative bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 border border-border h-full flex flex-col">
+                {/* Image */}
+                <div className="relative h-52 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 </div>
 
                 {/* Content */}
-                <h3 className="font-heading text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {service.description}
-                </p>
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="font-heading text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1">
+                    {service.description}
+                  </p>
 
-                {/* Link */}
-                <Button asChild variant="ghost" className="p-0 h-auto hover:bg-transparent">
-                  <Link
-                    to={service.href}
-                    className="inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all"
-                  >
-                    {t('services.learnMore')}
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </Button>
+                  {/* Link */}
+                  <Button asChild variant="ghost" className="p-0 h-auto hover:bg-transparent self-start">
+                    <Link
+                      to={service.href}
+                      className="inline-flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all"
+                    >
+                      {language === 'pt' ? 'Saiba Mais' : 'Learn More'}
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  </Button>
+                </div>
               </div>
             </motion.div>
           ))}
