@@ -13,20 +13,20 @@ import Footer from '@/components/layout/Footer';
 import ServiceImageSlider from '@/components/services/ServiceImageSlider';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
 
-// Import slider images
+// Import slider images - brand-safe, realistic
 import sliderHouseWashing from '@/assets/slider-house-washing.jpg';
-import sliderSoftwashPro from '@/assets/slider-softwash-pro.jpg';
-import sliderSoftwash from '@/assets/slider-softwash.jpg';
-import serviceSoftwash from '@/assets/service-softwash-new.jpg';
+import sliderSoftwashBuilding from '@/assets/slider-softwash-building.jpg';
+import sliderPaintingExterior from '@/assets/slider-painting-exterior.jpg';
+import sliderDriveway from '@/assets/slider-driveway-clean.jpg';
 
 const SoftWashing = () => {
   const { t, language } = useLanguage();
 
   const sliderImages = [
     { src: sliderHouseWashing, alt: 'Professional house exterior soft washing' },
-    { src: sliderSoftwashPro, alt: 'Safe soft washing on residential siding' },
-    { src: sliderSoftwash, alt: 'Gentle roof and siding cleaning' },
-    { src: serviceSoftwash, alt: 'Delicate surface cleaning service' },
+    { src: sliderSoftwashBuilding, alt: 'Safe soft washing on strata building' },
+    { src: sliderPaintingExterior, alt: 'Exterior property maintenance' },
+    { src: sliderDriveway, alt: 'Residential property care' },
   ];
 
   const services = [

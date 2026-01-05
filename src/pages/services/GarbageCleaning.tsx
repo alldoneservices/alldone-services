@@ -13,18 +13,18 @@ import Footer from '@/components/layout/Footer';
 import ServiceImageSlider from '@/components/services/ServiceImageSlider';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
 
-// Import slider images
-import sliderGarbageRoom from '@/assets/slider-garbage-room.jpg';
-import sliderHotSteam from '@/assets/slider-hot-steam.jpg';
-import sliderParkade from '@/assets/slider-parkade.jpg';
-import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
+// Import slider images - brand-safe, realistic
+import sliderGarbageClean from '@/assets/slider-garbage-clean.jpg';
+import sliderHotWash from '@/assets/slider-hot-wash-clean.jpg';
+import sliderParkade from '@/assets/slider-parkade-clean.jpg';
+import sliderDriveway from '@/assets/slider-driveway-clean.jpg';
 
 const GarbageCleaning = () => {
   const { language } = useLanguage();
 
   const sliderImages = [
-    { src: sliderGarbageRoom, alt: 'Commercial garbage room pressure washing' },
-    { src: sliderHotSteam, alt: 'Hot pressure washing for tough stains and grease' },
+    { src: sliderGarbageClean, alt: 'Commercial garbage room pressure washing' },
+    { src: sliderHotWash, alt: 'Hot pressure washing for tough stains and grease' },
     { src: sliderParkade, alt: 'Building common area cleaning' },
     { src: sliderDriveway, alt: 'Industrial concrete cleaning' },
   ];
