@@ -7,6 +7,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 // Import service images
 import servicePressure from '@/assets/service-pressure.jpg';
 import serviceSoftwash from '@/assets/service-softwash.jpg';
+import serviceGutter from '@/assets/service-gutter.jpg';
 import servicePainting from '@/assets/service-painting.jpg';
 import serviceHandyman from '@/assets/service-handyman.jpg';
 
@@ -18,32 +19,40 @@ const Services = () => {
       image: servicePressure,
       title: language === 'pt' ? 'Lavagem de Alta Pressão' : 'Hot & Cold Pressure Washing',
       description: language === 'pt' 
-        ? 'Equipamento comercial de alta pressão para remover sujeira, graxa e manchas de qualquer superfície.'
-        : 'Commercial-grade hot and cold pressure washing to remove dirt, grease, and stains from any surface.',
+        ? 'Limpeza profunda para óleo, graxa e acúmulo pesado'
+        : 'Deep cleaning for oil, grease and heavy buildup',
       href: '/services/pressure-washing',
     },
     {
       image: serviceSoftwash,
       title: language === 'pt' ? 'Lavagem Suave' : 'Soft Washing',
       description: language === 'pt'
-        ? 'Limpeza suave para superfícies delicadas como revestimentos, telhados e decks.'
-        : 'Gentle low-pressure cleaning for delicate surfaces like siding, roofs, and decks.',
+        ? 'Limpeza segura para revestimentos, telhados e superfícies delicadas'
+        : 'Safe cleaning for siding, roofs and delicate surfaces',
       href: '/services/pressure-washing',
+    },
+    {
+      image: serviceGutter,
+      title: language === 'pt' ? 'Limpeza de Calhas' : 'Gutter Cleaning',
+      description: language === 'pt'
+        ? 'Limpeza sazonal de calhas para prevenir danos e bloqueios'
+        : 'Seasonal gutter cleaning to prevent water damage and blockages',
+      href: '/services/handyman',
     },
     {
       image: servicePainting,
       title: language === 'pt' ? 'Serviços de Pintura' : 'Painting Services',
       description: language === 'pt'
-        ? 'Pintura profissional interna e externa com materiais premium e acabamento especializado.'
-        : 'Professional interior and exterior painting with premium materials and expert craftsmanship.',
+        ? 'Pintura interna e externa bem feita'
+        : 'Interior and exterior painting done right',
       href: '/services/painting',
     },
     {
       image: serviceHandyman,
       title: language === 'pt' ? 'Manutenção de Propriedades' : 'Handyman & Property Care',
       description: language === 'pt'
-        ? 'Serviços completos de manutenção e reparos para propriedades residenciais e comerciais.'
-        : 'Complete property maintenance and repair services for residential and commercial properties.',
+        ? 'Reparos, manutenção e cuidado contínuo da propriedade'
+        : 'Repairs, maintenance and ongoing property care',
       href: '/services/handyman',
     },
   ];
@@ -94,7 +103,7 @@ const Services = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
         >
           {services.map((service, index) => (
             <motion.div
@@ -104,7 +113,7 @@ const Services = () => {
             >
               <div className="relative bg-card rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 border border-border h-full flex flex-col">
                 {/* Image */}
-                <div className="relative h-52 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
                   <img
                     src={service.image}
                     alt={service.title}
@@ -114,8 +123,8 @@ const Services = () => {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 flex flex-col flex-1">
-                  <h3 className="font-heading text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="font-heading text-lg font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                     {service.title}
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1">

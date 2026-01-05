@@ -4,10 +4,21 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import logo from '@/assets/logo.jpg';
 
 const Footer = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <footer className="bg-primary text-primary-foreground">
+      {/* Final Message Banner */}
+      <div className="bg-accent py-8">
+        <div className="container mx-auto px-4 text-center">
+          <p className="font-heading text-xl md:text-2xl lg:text-3xl font-bold text-accent-foreground">
+            {language === 'pt' 
+              ? 'De casas pequenas a grandes propriedades — nós fazemos TUDO.'
+              : 'From small homes to large properties — we get it ALL DONE.'}
+          </p>
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Company Info */}
