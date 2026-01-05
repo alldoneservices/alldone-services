@@ -10,10 +10,24 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import SEO from '@/components/SEO';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { ServiceHero, ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
+import ServiceImageSlider from '@/components/services/ServiceImageSlider';
+import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
+
+// Import slider images for pressure washing
+import sliderHotSteam from '@/assets/slider-hot-steam.jpg';
+import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
+import sliderHotPressure from '@/assets/slider-hot-pressure-realistic.jpg';
+import sliderStrataRealistic from '@/assets/slider-strata-realistic.jpg';
 
 const PressureWashing = () => {
   const { t, language } = useLanguage();
+
+  const sliderImages = [
+    { src: sliderHotSteam, alt: 'Hot pressure washing with visible steam cleaning oil stains' },
+    { src: sliderDriveway, alt: 'Residential driveway and garage pressure washing' },
+    { src: sliderHotPressure, alt: 'Hot pressure washing concrete surfaces' },
+    { src: sliderStrataRealistic, alt: 'Building exterior pressure washing' },
+  ];
 
   const services = [
     {
@@ -59,10 +73,10 @@ const PressureWashing = () => {
       />
       <Header />
       <main>
-        <ServiceHero
-          title={t('pressure.hero.title')}
-          subtitle={t('pressure.hero.subtitle')}
-          description={t('pressure.hero.description')}
+        <ServiceImageSlider 
+          images={sliderImages}
+          title={language === 'pt' ? 'Lavagem de Alta Pressão' : 'Hot & Cold Pressure Washing'}
+          subtitle={language === 'pt' ? 'Limpeza Profissional' : 'Professional Deep Cleaning'}
         />
         <ServiceList
           title={t('pressure.services.title')}

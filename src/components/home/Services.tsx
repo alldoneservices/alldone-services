@@ -29,7 +29,7 @@ const Services = () => {
       description: language === 'pt'
         ? 'Limpeza segura para revestimentos, telhados e superfícies delicadas'
         : 'Safe cleaning for siding, roofs and delicate surfaces',
-      href: '/services/pressure-washing',
+      href: '/services/soft-washing',
     },
     {
       image: serviceGutter,
@@ -37,7 +37,7 @@ const Services = () => {
       description: language === 'pt'
         ? 'Limpeza sazonal de calhas para prevenir danos e bloqueios'
         : 'Seasonal gutter cleaning to prevent water damage and blockages',
-      href: '/services/handyman',
+      href: '/services/gutter-cleaning',
     },
     {
       image: servicePainting,

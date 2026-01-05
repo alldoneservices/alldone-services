@@ -10,10 +10,24 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import SEO from '@/components/SEO';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { ServiceHero, ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
+import ServiceImageSlider from '@/components/services/ServiceImageSlider';
+import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
+
+// Import slider images for handyman
+import serviceHandyman from '@/assets/service-handyman-new.jpg';
+import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
+import sliderHouseWashing from '@/assets/slider-house-washing.jpg';
+import sliderGutterResidential from '@/assets/slider-gutter-residential.jpg';
 
 const Handyman = () => {
   const { t, language } = useLanguage();
+
+  const sliderImages = [
+    { src: serviceHandyman, alt: 'Professional handyman repair and maintenance' },
+    { src: sliderDriveway, alt: 'Property maintenance and care' },
+    { src: sliderHouseWashing, alt: 'Home exterior maintenance' },
+    { src: sliderGutterResidential, alt: 'Residential property care' },
+  ];
 
   const services = [
     {
@@ -59,10 +73,10 @@ const Handyman = () => {
       />
       <Header />
       <main>
-        <ServiceHero
-          title={t('handyman.hero.title')}
-          subtitle={t('handyman.hero.subtitle')}
-          description={t('handyman.hero.description')}
+        <ServiceImageSlider 
+          images={sliderImages}
+          title={language === 'pt' ? 'Serviços Gerais' : 'Handyman & Property Care'}
+          subtitle={language === 'pt' ? 'Manutenção Profissional' : 'Professional Maintenance'}
         />
         <ServiceList
           title={t('handyman.services.title')}

@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
-import { Building2, Truck, Droplets, ParkingMeter, Wrench } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Building2, Truck, Droplets, ParkingMeter, Wrench, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const CommercialStrata = () => {
@@ -91,6 +93,22 @@ const CommercialStrata = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="text-center mt-12"
+        >
+          <Button asChild size="lg" className="gap-2">
+            <Link to="/services/commercial-strata">
+              {language === 'pt' ? 'Ver Todos os Serviços Comerciais' : 'View All Commercial Services'}
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

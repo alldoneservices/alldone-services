@@ -10,10 +10,24 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import SEO from '@/components/SEO';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { ServiceHero, ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
+import ServiceImageSlider from '@/components/services/ServiceImageSlider';
+import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
+
+// Import slider images for painting
+import sliderPainting from '@/assets/slider-painting.jpg';
+import servicePainting from '@/assets/service-painting-new.jpg';
+import sliderHouseWashing from '@/assets/slider-house-washing.jpg';
+import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
 
 const Painting = () => {
   const { t, language } = useLanguage();
+
+  const sliderImages = [
+    { src: sliderPainting, alt: 'Professional interior and exterior painting' },
+    { src: servicePainting, alt: 'Commercial and residential painting services' },
+    { src: sliderHouseWashing, alt: 'House exterior preparation and painting' },
+    { src: sliderDriveway, alt: 'Garage and property painting' },
+  ];
 
   const services = [
     {
@@ -59,10 +73,10 @@ const Painting = () => {
       />
       <Header />
       <main>
-        <ServiceHero
-          title={t('painting.hero.title')}
-          subtitle={t('painting.hero.subtitle')}
-          description={t('painting.hero.description')}
+        <ServiceImageSlider 
+          images={sliderImages}
+          title={language === 'pt' ? 'Serviços de Pintura' : 'Painting Services'}
+          subtitle={language === 'pt' ? 'Qualidade Profissional' : 'Professional Quality'}
         />
         <ServiceList
           title={t('painting.services.title')}
