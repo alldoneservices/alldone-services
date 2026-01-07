@@ -14,19 +14,19 @@ import ServiceImageSlider from '@/components/services/ServiceImageSlider';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
 
 // Import slider images - brand-safe, realistic
-import sliderSoftwashBuilding from '@/assets/slider-softwash-building.jpg';
-import sliderParkade from '@/assets/slider-parkade-clean.jpg';
-import sliderHotWash from '@/assets/slider-hot-wash-clean.jpg';
-import sliderGarbageClean from '@/assets/slider-garbage-clean.jpg';
+import sliderStrata from '@/assets/slider-strata-realistic.jpg';
+import sliderParkade from '@/assets/slider-parkade.jpg';
+import sliderHotWash from '@/assets/slider-hot-pressure-realistic.jpg';
+import sliderGarbageRoom from '@/assets/slider-garbage-room.jpg';
 
 const CommercialStrata = () => {
   const { language } = useLanguage();
 
   const sliderImages = [
-    { src: sliderSoftwashBuilding, alt: 'Multi-storey strata building washing' },
+    { src: sliderStrata, alt: 'Multi-storey strata building washing' },
     { src: sliderParkade, alt: 'Parkade and common area cleaning' },
     { src: sliderHotWash, alt: 'Commercial concrete cleaning' },
-    { src: sliderGarbageClean, alt: 'Building garbage room cleaning' },
+    { src: sliderGarbageRoom, alt: 'Building garbage room cleaning' },
   ];
 
   const services = [

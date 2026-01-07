@@ -17,7 +17,7 @@ import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents
 import sliderHandymanPlumbing from '@/assets/slider-handyman-plumbing.jpg';
 import sliderHandymanTV from '@/assets/slider-handyman-tv.jpg';
 import sliderPaintingInterior from '@/assets/slider-painting-interior.jpg';
-import sliderPaintingExterior from '@/assets/slider-painting-exterior.jpg';
+import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
 
 const Handyman = () => {
   const { t, language } = useLanguage();
@@ -26,7 +26,7 @@ const Handyman = () => {
     { src: sliderHandymanPlumbing, alt: 'Professional plumbing repair service' },
     { src: sliderHandymanTV, alt: 'TV wall mounting and installation' },
     { src: sliderPaintingInterior, alt: 'Interior home repairs and painting' },
-    { src: sliderPaintingExterior, alt: 'Exterior maintenance and repairs' },
+    { src: sliderDriveway, alt: 'Exterior maintenance and repairs' },
   ];
 
   const services = [

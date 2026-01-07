@@ -14,18 +14,18 @@ import ServiceImageSlider from '@/components/services/ServiceImageSlider';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
 
 // Import slider images - brand-safe, realistic
-import sliderGutterClean from '@/assets/slider-gutter-clean.jpg';
-import sliderHouseWashing from '@/assets/slider-house-washing.jpg';
-import sliderPaintingExterior from '@/assets/slider-painting-exterior.jpg';
-import sliderDriveway from '@/assets/slider-driveway-clean.jpg';
+import sliderGutterClean from '@/assets/slider-gutter-residential.jpg';
+import sliderSoftwash from '@/assets/slider-softwash-pro.jpg';
+import sliderStrata from '@/assets/slider-strata-realistic.jpg';
+import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
 
 const GutterCleaning = () => {
   const { t, language } = useLanguage();
 
   const sliderImages = [
     { src: sliderGutterClean, alt: 'Professional gutter cleaning with fall leaves' },
-    { src: sliderHouseWashing, alt: 'Complete exterior property care' },
-    { src: sliderPaintingExterior, alt: 'Exterior home maintenance' },
+    { src: sliderSoftwash, alt: 'Complete exterior property care' },
+    { src: sliderStrata, alt: 'Multi-unit building gutter maintenance' },
     { src: sliderDriveway, alt: 'Property maintenance services' },
   ];
 

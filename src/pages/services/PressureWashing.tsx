@@ -14,19 +14,19 @@ import ServiceImageSlider from '@/components/services/ServiceImageSlider';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
 
 // Import slider images - brand-safe, realistic
-import sliderHotWash from '@/assets/slider-hot-wash-clean.jpg';
-import sliderDriveway from '@/assets/slider-driveway-clean.jpg';
-import sliderParkade from '@/assets/slider-parkade-clean.jpg';
-import sliderSoftwashBuilding from '@/assets/slider-softwash-building.jpg';
+import sliderHotWash from '@/assets/slider-hot-pressure-realistic.jpg';
+import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
+import sliderParkade from '@/assets/slider-parkade.jpg';
+import sliderStrata from '@/assets/slider-strata-realistic.jpg';
 
 const PressureWashing = () => {
   const { t, language } = useLanguage();
 
   const sliderImages = [
-    { src: sliderHotWash, alt: 'Hot pressure washing with visible steam' },
     { src: sliderDriveway, alt: 'Residential driveway surface cleaner pressure washing' },
+    { src: sliderHotWash, alt: 'Hot pressure washing with visible steam' },
     { src: sliderParkade, alt: 'Parkade and garage cleaning service' },
-    { src: sliderSoftwashBuilding, alt: 'Building exterior soft washing' },
+    { src: sliderStrata, alt: 'Strata building exterior washing' },
   ];
 
   const services = [
