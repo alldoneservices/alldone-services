@@ -13,20 +13,21 @@ import Footer from '@/components/layout/Footer';
 import ServiceImageSlider from '@/components/services/ServiceImageSlider';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
 
-// Import slider images - brand-safe, realistic painting visuals
+// Import slider images - LOCKED painting-only visuals (garage, parkade, corridor)
+import sliderPaintingGarage from '@/assets/slider-painting-garage.jpg';
+import sliderPaintingCorridor from '@/assets/slider-painting-corridor.jpg';
+import sliderPaintingParkade from '@/assets/menu-painting.jpg';
 import sliderPaintingInterior from '@/assets/slider-painting-interior.jpg';
-import sliderPaintingExterior from '@/assets/slider-painting-exterior.jpg';
-import sliderSoftwash from '@/assets/slider-softwash-pro.jpg';
-import sliderStrata from '@/assets/slider-strata-realistic.jpg';
 
 const Painting = () => {
   const { t, language } = useLanguage();
 
+  // LOCKED slider images - painting only (NO pressure washing images)
   const sliderImages = [
-    { src: sliderPaintingInterior, alt: 'Professional interior wall painting' },
-    { src: sliderPaintingExterior, alt: 'Exterior house painting on ladder' },
-    { src: sliderSoftwash, alt: 'House exterior preparation' },
-    { src: sliderStrata, alt: 'Commercial and strata painting services' },
+    { src: sliderPaintingGarage, alt: 'Professional garage wall painting' },
+    { src: sliderPaintingParkade, alt: 'Parkade industrial painting' },
+    { src: sliderPaintingCorridor, alt: 'Commercial corridor painting' },
+    { src: sliderPaintingInterior, alt: 'Interior wall painting' },
   ];
 
   const services = [
