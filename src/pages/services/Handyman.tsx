@@ -13,20 +13,19 @@ import Footer from '@/components/layout/Footer';
 import ServiceImageSlider from '@/components/services/ServiceImageSlider';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
 
-// Import slider images - brand-safe, realistic handyman visuals
-import sliderHandymanPlumbing from '@/assets/slider-handyman-plumbing.jpg';
+// Import slider images - LOCKED handyman-only visuals
+import sliderHandymanPlumbing from '@/assets/menu-handyman.jpg';
+import sliderHandymanDoor from '@/assets/slider-handyman-door.jpg';
 import sliderHandymanTV from '@/assets/slider-handyman-tv.jpg';
-import sliderPaintingInterior from '@/assets/slider-painting-interior.jpg';
-import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
 
 const Handyman = () => {
   const { t, language } = useLanguage();
 
+  // LOCKED slider images - handyman tasks only (plumbing + door repair)
   const sliderImages = [
-    { src: sliderHandymanPlumbing, alt: 'Professional plumbing repair service' },
+    { src: sliderHandymanPlumbing, alt: 'Plumbing repair with red marking tape' },
+    { src: sliderHandymanDoor, alt: 'Door repair and maintenance' },
     { src: sliderHandymanTV, alt: 'TV wall mounting and installation' },
-    { src: sliderPaintingInterior, alt: 'Interior home repairs and painting' },
-    { src: sliderDriveway, alt: 'Exterior maintenance and repairs' },
   ];
 
   const services = [

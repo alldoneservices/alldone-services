@@ -7,10 +7,10 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
 import logo from '@/assets/logo.jpg';
 
-// Service menu images
-import servicePressure from '@/assets/service-pressure-new.jpg';
-import serviceHandyman from '@/assets/service-handyman-new.jpg';
-import servicePainting from '@/assets/service-painting-new.jpg';
+// Service menu images - LOCKED, do not auto-generate
+import menuPressure from '@/assets/menu-pressure-washing.jpg';
+import menuPainting from '@/assets/menu-painting.jpg';
+import menuHandyman from '@/assets/menu-handyman.jpg';
 import serviceGutter from '@/assets/service-gutter-new.jpg';
 import serviceSoftwash from '@/assets/service-softwash-new.jpg';
 
@@ -24,12 +24,13 @@ const Header = () => {
 
   const [hoveredService, setHoveredService] = useState<string | null>(null);
 
+  // LOCKED menu images - do not change without explicit instruction
   const serviceMenuItems = [
-    { href: '/services/pressure-washing', label: t('nav.pressureWashing'), image: servicePressure },
+    { href: '/services/pressure-washing', label: t('nav.pressureWashing'), image: menuPressure },
     { href: '/services/soft-washing', label: language === 'pt' ? 'Lavagem Suave' : 'Soft Washing', image: serviceSoftwash },
     { href: '/services/gutter-cleaning', label: language === 'pt' ? 'Limpeza de Calhas' : 'Gutter Cleaning', image: serviceGutter },
-    { href: '/services/painting', label: t('nav.painting'), image: servicePainting },
-    { href: '/services/handyman', label: t('nav.handyman'), image: serviceHandyman },
+    { href: '/services/painting', label: t('nav.painting'), image: menuPainting },
+    { href: '/services/handyman', label: t('nav.handyman'), image: menuHandyman },
   ];
 
   const navLinks = [
