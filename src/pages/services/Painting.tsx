@@ -16,8 +16,8 @@ import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents
 // Import slider images - brand-safe, realistic painting visuals
 import sliderPaintingInterior from '@/assets/slider-painting-interior.jpg';
 import sliderPaintingExterior from '@/assets/slider-painting-exterior.jpg';
-import sliderHouseWashing from '@/assets/slider-house-washing.jpg';
-import sliderHandymanTV from '@/assets/slider-handyman-tv.jpg';
+import sliderSoftwash from '@/assets/slider-softwash-pro.jpg';
+import sliderStrata from '@/assets/slider-strata-realistic.jpg';
 
 const Painting = () => {
   const { t, language } = useLanguage();
@@ -25,8 +25,8 @@ const Painting = () => {
   const sliderImages = [
     { src: sliderPaintingInterior, alt: 'Professional interior wall painting' },
     { src: sliderPaintingExterior, alt: 'Exterior house painting on ladder' },
-    { src: sliderHouseWashing, alt: 'House exterior preparation' },
-    { src: sliderHandymanTV, alt: 'Interior home improvements' },
+    { src: sliderSoftwash, alt: 'House exterior preparation' },
+    { src: sliderStrata, alt: 'Commercial and strata painting services' },
   ];
 
   const services = [

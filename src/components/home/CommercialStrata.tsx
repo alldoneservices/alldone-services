@@ -58,16 +58,16 @@ const CommercialStrata = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
             <Building2 className="w-5 h-5 text-primary" />
             <span className="text-primary font-semibold text-sm uppercase tracking-wide">
-              {language === 'pt' ? 'Grandes Projetos' : 'Large Scale Projects'}
+              {language === 'pt' ? 'Clientes Comerciais' : 'Commercial Clients'}
             </span>
           </div>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             {language === 'pt' ? 'Serviços Comerciais e Condomínios' : 'Commercial & Strata Services'}
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
             {language === 'pt'
-              ? 'Soluções de limpeza em grande escala para administradores de propriedades, condomínios e clientes comerciais'
-              : 'Large-scale cleaning solutions for property managers, strata councils and commercial clients'}
+              ? 'Serviços confiáveis de cuidado de propriedade para conselhos de condomínio, administradores de propriedades e clientes comerciais.'
+              : 'Reliable property care services tailored for strata councils, property managers, and commercial clients.'}
           </p>
         </motion.div>
 

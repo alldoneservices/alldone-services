@@ -5,14 +5,14 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 // Import slider images - brand-safe, realistic service visuals
-import sliderDriveway from '@/assets/slider-driveway-clean.jpg';
-import sliderHouseWashing from '@/assets/slider-house-washing.jpg';
-import sliderGutterClean from '@/assets/slider-gutter-clean.jpg';
-import sliderGarbageClean from '@/assets/slider-garbage-clean.jpg';
-import sliderSoftwashBuilding from '@/assets/slider-softwash-building.jpg';
-import sliderHotWash from '@/assets/slider-hot-wash-clean.jpg';
+import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
+import sliderGutterClean from '@/assets/slider-gutter-residential.jpg';
+import sliderGarbageRoom from '@/assets/slider-garbage-room.jpg';
+import sliderStrata from '@/assets/slider-strata-realistic.jpg';
+import sliderHotWash from '@/assets/slider-hot-pressure-realistic.jpg';
+import sliderParkade from '@/assets/slider-parkade.jpg';
+import sliderSoftwash from '@/assets/slider-softwash-pro.jpg';
 import sliderPaintingExterior from '@/assets/slider-painting-exterior.jpg';
-import sliderParkade from '@/assets/slider-parkade-clean.jpg';
 
 const Hero = () => {
   const { language } = useLanguage();
@@ -20,36 +20,36 @@ const Hero = () => {
 
   const slides = [
     {
-      image: sliderHotWash,
-      alt: 'Hot pressure washing with visible steam cleaning commercial concrete',
-    },
-    {
       image: sliderDriveway,
       alt: 'Professional surface cleaner pressure washing residential driveway',
-    },
-    {
-      image: sliderHouseWashing,
-      alt: 'Professional house exterior soft washing service',
     },
     {
       image: sliderParkade,
       alt: 'Two workers cleaning enclosed parking garage parkade',
     },
     {
+      image: sliderHotWash,
+      alt: 'Hot pressure washing with visible steam cleaning commercial concrete',
+    },
+    {
+      image: sliderStrata,
+      alt: 'Strata building exterior soft washing service',
+    },
+    {
       image: sliderGutterClean,
       alt: 'Seasonal gutter cleaning on residential home with fall leaves',
     },
     {
+      image: sliderGarbageRoom,
+      alt: 'Commercial garbage room cleaning service',
+    },
+    {
+      image: sliderSoftwash,
+      alt: 'House siding soft washing service',
+    },
+    {
       image: sliderPaintingExterior,
       alt: 'Professional exterior house painting service',
-    },
-    {
-      image: sliderSoftwashBuilding,
-      alt: 'Strata building exterior soft washing with professional equipment',
-    },
-    {
-      image: sliderGarbageClean,
-      alt: 'Commercial garbage room cleaning service',
     },
   ];
 
@@ -126,15 +126,6 @@ const Hero = () => {
       <div className="container mx-auto px-4 pt-32 pb-24 relative z-10">
         <div className="max-w-4xl">
           {/* Main Headline */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.05 }}
-            className="text-accent font-heading font-bold text-lg md:text-xl uppercase tracking-wider mb-2 drop-shadow-md"
-          >
-            {language === 'pt' ? 'CUIDADO DE PROPRIEDADE' : 'PROPERTY CARE'}
-          </motion.p>
-          
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -143,9 +134,20 @@ const Hero = () => {
             style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.5)' }}
           >
             {language === 'pt' 
-              ? 'Residencial, Comercial e Condomínios' 
-              : 'Residential, Commercial & Strata'}
+              ? 'Serviços de Cuidado de Propriedade' 
+              : 'Property Care Services'}
           </motion.h1>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="text-white/90 text-xl md:text-2xl mb-6"
+          >
+            {language === 'pt' 
+              ? 'para Residencial, Comercial e Condomínios' 
+              : 'for Residential, Commercial & Strata'}
+          </motion.p>
 
           {/* Services Tagline */}
           <motion.div
@@ -154,7 +156,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-8"
           >
-            <p className="text-white font-heading font-semibold text-xl md:text-2xl mb-2">
+            <p className="text-accent font-heading font-bold text-lg md:text-xl mb-2">
               {language === 'pt' 
                 ? 'Quente & Frio • Pressão & Lavagem Suave' 
                 : 'Hot & Cold • Pressure & Soft Washing'}
