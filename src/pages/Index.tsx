@@ -1,3 +1,4 @@
+import React from 'react';
 import SEO from '@/components/SEO';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
@@ -15,7 +16,7 @@ const Index = () => {
   const { language } = useLanguage();
 
   return (
-    <>
+    <React.Fragment>
       <SEO
         title={language === 'pt' 
           ? 'All Done Services - Serviços Profissionais de Manutenção em Vancouver'
@@ -37,7 +38,7 @@ const Index = () => {
       </main>
       <Footer />
       <WhatsAppButton />
-    </>
+    </React.Fragment>
   );
 };
 
