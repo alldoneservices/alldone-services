@@ -10,24 +10,14 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import SEO from '@/components/SEO';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import ServiceImageSlider from '@/components/services/ServiceImageSlider';
+import ServiceHero from '@/components/services/ServiceHero';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
 
-// Import slider images - brand-safe, realistic
-import sliderGutterClean from '@/assets/slider-gutter-residential.jpg';
-import sliderSoftwash from '@/assets/slider-softwash-pro.jpg';
-import sliderStrata from '@/assets/slider-strata-realistic.jpg';
-import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
+// Import hero image - gutter cleaning specific
+import heroGutter from '@/assets/slider-gutter-residential.jpg';
 
 const GutterCleaning = () => {
-  const { t, language } = useLanguage();
-
-  const sliderImages = [
-    { src: sliderGutterClean, alt: 'Professional gutter cleaning with fall leaves' },
-    { src: sliderSoftwash, alt: 'Complete exterior property care' },
-    { src: sliderStrata, alt: 'Multi-unit building gutter maintenance' },
-    { src: sliderDriveway, alt: 'Property maintenance services' },
-  ];
+  const { language } = useLanguage();
 
   const services = [
     {
@@ -85,8 +75,8 @@ const GutterCleaning = () => {
       />
       <Header />
       <main>
-        <ServiceImageSlider 
-          images={sliderImages}
+        <ServiceHero 
+          image={heroGutter}
           title={language === 'pt' ? 'Limpeza de Calhas' : 'Gutter Cleaning Services'}
           subtitle={language === 'pt' ? 'Manutenção Sazonal' : 'Seasonal Maintenance'}
         />

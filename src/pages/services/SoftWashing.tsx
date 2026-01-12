@@ -10,24 +10,14 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import SEO from '@/components/SEO';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import ServiceImageSlider from '@/components/services/ServiceImageSlider';
+import ServiceHero from '@/components/services/ServiceHero';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
 
-// Import slider images - brand-safe, realistic
-import sliderSoftwash from '@/assets/slider-softwash-pro.jpg';
-import sliderStrata from '@/assets/slider-strata-realistic.jpg';
-import sliderStrataBuilding from '@/assets/slider-strata-building.jpg';
-import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
+// Import hero image - soft washing specific
+import heroSoftwash from '@/assets/slider-softwash-pro.jpg';
 
 const SoftWashing = () => {
-  const { t, language } = useLanguage();
-
-  const sliderImages = [
-    { src: sliderSoftwash, alt: 'Professional house exterior soft washing' },
-    { src: sliderStrata, alt: 'Strata building soft washing service' },
-    { src: sliderStrataBuilding, alt: 'Safe soft washing on apartment building' },
-    { src: sliderDriveway, alt: 'Residential property care' },
-  ];
+  const { language } = useLanguage();
 
   const services = [
     {
@@ -85,8 +75,8 @@ const SoftWashing = () => {
       />
       <Header />
       <main>
-        <ServiceImageSlider 
-          images={sliderImages}
+        <ServiceHero 
+          image={heroSoftwash}
           title={language === 'pt' ? 'Lavagem Suave' : 'Soft Washing Services'}
           subtitle={language === 'pt' ? 'Limpeza Segura e Eficaz' : 'Safe & Effective Cleaning'}
         />

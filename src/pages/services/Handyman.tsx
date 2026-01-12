@@ -10,23 +10,14 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import SEO from '@/components/SEO';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import ServiceImageSlider from '@/components/services/ServiceImageSlider';
+import ServiceHero from '@/components/services/ServiceHero';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
 
-// Import slider images - LOCKED handyman-only visuals
-import sliderHandymanPlumbing from '@/assets/menu-handyman.jpg';
-import sliderHandymanDoor from '@/assets/slider-handyman-door.jpg';
-import sliderHandymanTV from '@/assets/slider-handyman-tv.jpg';
+// Import hero image - handyman specific
+import heroHandyman from '@/assets/menu-handyman.jpg';
 
 const Handyman = () => {
   const { t, language } = useLanguage();
-
-  // LOCKED slider images - handyman tasks only (plumbing + door repair)
-  const sliderImages = [
-    { src: sliderHandymanPlumbing, alt: 'Plumbing repair with red marking tape' },
-    { src: sliderHandymanDoor, alt: 'Door repair and maintenance' },
-    { src: sliderHandymanTV, alt: 'TV wall mounting and installation' },
-  ];
 
   const services = [
     {
@@ -72,8 +63,8 @@ const Handyman = () => {
       />
       <Header />
       <main>
-        <ServiceImageSlider 
-          images={sliderImages}
+        <ServiceHero 
+          image={heroHandyman}
           title={language === 'pt' ? 'Serviços Gerais' : 'Handyman & Property Care'}
           subtitle={language === 'pt' ? 'Manutenção Profissional' : 'Professional Maintenance'}
         />
