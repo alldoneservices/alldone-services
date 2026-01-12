@@ -4,6 +4,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/home/Hero';
 import Services from '@/components/home/Services';
+import ResidentialServices from '@/components/home/ResidentialServices';
 import CommercialStrata from '@/components/home/CommercialStrata';
 import WhyUs from '@/components/home/WhyUs';
 import BeforeAfter from '@/components/home/BeforeAfter';
@@ -30,6 +31,7 @@ const Index = () => {
       <main>
         <Hero />
         <Services />
+        <ResidentialServices />
         <CommercialStrata />
         <WhyUs />
         <BeforeAfter />
