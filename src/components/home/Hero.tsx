@@ -4,52 +4,55 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-// Import slider images - brand-safe, realistic service visuals
-import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
-import sliderGutterClean from '@/assets/slider-gutter-residential.jpg';
-import sliderGarbageRoom from '@/assets/slider-garbage-room.jpg';
-import sliderStrata from '@/assets/slider-strata-realistic.jpg';
-import sliderHotWash from '@/assets/slider-hot-pressure-realistic.jpg';
-import sliderParkade from '@/assets/slider-parkade.jpg';
-import sliderSoftwash from '@/assets/slider-softwash-pro.jpg';
-import sliderPaintingExterior from '@/assets/slider-painting-exterior.jpg';
+// Import one image per service offered
+import imgPressureWashing from '@/assets/menu-pressure-washing.jpg';
+import imgSoftWashing from '@/assets/slider-softwash-pro.jpg';
+import imgGutterCleaning from '@/assets/slider-gutter-residential.jpg';
+import imgPainting from '@/assets/menu-painting.jpg';
+import imgHandyman from '@/assets/menu-handyman.jpg';
+import imgGarbageCleaning from '@/assets/slider-garbage-room.jpg';
+import imgCommercialStrata from '@/assets/slider-strata-realistic.jpg';
 
 const Hero = () => {
   const { language } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  // One slide per service
   const slides = [
     {
-      image: sliderDriveway,
-      alt: 'Professional surface cleaner pressure washing residential driveway',
+      image: imgPressureWashing,
+      alt: 'Hot & Cold Pressure Washing Service',
+      serviceName: language === 'pt' ? 'Lavagem de Alta Pressão' : 'Pressure Washing',
     },
     {
-      image: sliderParkade,
-      alt: 'Two workers cleaning enclosed parking garage parkade',
+      image: imgSoftWashing,
+      alt: 'Soft Washing Service',
+      serviceName: language === 'pt' ? 'Lavagem Suave' : 'Soft Washing',
     },
     {
-      image: sliderHotWash,
-      alt: 'Hot pressure washing with visible steam cleaning commercial concrete',
+      image: imgGutterCleaning,
+      alt: 'Gutter Cleaning Service',
+      serviceName: language === 'pt' ? 'Limpeza de Calhas' : 'Gutter Cleaning',
     },
     {
-      image: sliderStrata,
-      alt: 'Strata building exterior soft washing service',
+      image: imgPainting,
+      alt: 'Professional Painting Service',
+      serviceName: language === 'pt' ? 'Serviços de Pintura' : 'Painting Services',
     },
     {
-      image: sliderGutterClean,
-      alt: 'Seasonal gutter cleaning on residential home with fall leaves',
+      image: imgHandyman,
+      alt: 'Handyman & Property Care Service',
+      serviceName: language === 'pt' ? 'Serviços Gerais' : 'Handyman & Property Care',
     },
     {
-      image: sliderGarbageRoom,
-      alt: 'Commercial garbage room cleaning service',
+      image: imgGarbageCleaning,
+      alt: 'Garbage & Dumpster Cleaning Service',
+      serviceName: language === 'pt' ? 'Limpeza de Lixeiras' : 'Garbage Cleaning',
     },
     {
-      image: sliderSoftwash,
-      alt: 'House siding soft washing service',
-    },
-    {
-      image: sliderPaintingExterior,
-      alt: 'Professional exterior house painting service',
+      image: imgCommercialStrata,
+      alt: 'Commercial & Strata Services',
+      serviceName: language === 'pt' ? 'Comercial & Strata' : 'Commercial & Strata',
     },
   ];
 
@@ -125,6 +128,19 @@ const Hero = () => {
       {/* Content */}
       <div className="container mx-auto px-4 pt-32 pb-24 relative z-10">
         <div className="max-w-4xl">
+          {/* Current Service Badge */}
+          <motion.div
+            key={`service-${currentSlide}`}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-block mb-4"
+          >
+            <span className="bg-accent/90 text-accent-foreground px-4 py-1.5 rounded-full text-sm font-semibold">
+              {slides[currentSlide].serviceName}
+            </span>
+          </motion.div>
+
           {/* Main Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}

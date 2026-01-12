@@ -5,6 +5,7 @@ import Hero from '@/components/home/Hero';
 import Services from '@/components/home/Services';
 import CommercialStrata from '@/components/home/CommercialStrata';
 import WhyUs from '@/components/home/WhyUs';
+import BeforeAfter from '@/components/home/BeforeAfter';
 import QuoteForm from '@/components/home/QuoteForm';
 import CTA from '@/components/home/CTA';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -29,6 +30,7 @@ const Index = () => {
         <Services />
         <CommercialStrata />
         <WhyUs />
+        <BeforeAfter />
         <QuoteForm />
         <CTA />
       </main>

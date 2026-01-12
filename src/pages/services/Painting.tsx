@@ -10,25 +10,14 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import SEO from '@/components/SEO';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import ServiceImageSlider from '@/components/services/ServiceImageSlider';
+import ServiceHero from '@/components/services/ServiceHero';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
 
-// Import slider images - LOCKED painting-only visuals (garage, parkade, corridor)
-import sliderPaintingGarage from '@/assets/slider-painting-garage.jpg';
-import sliderPaintingCorridor from '@/assets/slider-painting-corridor.jpg';
-import sliderPaintingParkade from '@/assets/menu-painting.jpg';
-import sliderPaintingInterior from '@/assets/slider-painting-interior.jpg';
+// Import hero image - painting specific
+import heroPainting from '@/assets/menu-painting.jpg';
 
 const Painting = () => {
   const { t, language } = useLanguage();
-
-  // LOCKED slider images - painting only (NO pressure washing images)
-  const sliderImages = [
-    { src: sliderPaintingGarage, alt: 'Professional garage wall painting' },
-    { src: sliderPaintingParkade, alt: 'Parkade industrial painting' },
-    { src: sliderPaintingCorridor, alt: 'Commercial corridor painting' },
-    { src: sliderPaintingInterior, alt: 'Interior wall painting' },
-  ];
 
   const services = [
     {
@@ -74,8 +63,8 @@ const Painting = () => {
       />
       <Header />
       <main>
-        <ServiceImageSlider 
-          images={sliderImages}
+        <ServiceHero 
+          image={heroPainting}
           title={language === 'pt' ? 'Serviços de Pintura' : 'Painting Services'}
           subtitle={language === 'pt' ? 'Qualidade Profissional' : 'Professional Quality'}
         />

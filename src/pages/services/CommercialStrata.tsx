@@ -10,24 +10,14 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import SEO from '@/components/SEO';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import ServiceImageSlider from '@/components/services/ServiceImageSlider';
+import ServiceHero from '@/components/services/ServiceHero';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
 
-// Import slider images - brand-safe, realistic
-import sliderStrata from '@/assets/slider-strata-realistic.jpg';
-import sliderParkade from '@/assets/slider-parkade.jpg';
-import sliderHotWash from '@/assets/slider-hot-pressure-realistic.jpg';
-import sliderGarbageRoom from '@/assets/slider-garbage-room.jpg';
+// Import hero image - commercial/strata specific
+import heroStrata from '@/assets/slider-strata-realistic.jpg';
 
 const CommercialStrata = () => {
   const { language } = useLanguage();
-
-  const sliderImages = [
-    { src: sliderStrata, alt: 'Multi-storey strata building washing' },
-    { src: sliderParkade, alt: 'Parkade and common area cleaning' },
-    { src: sliderHotWash, alt: 'Commercial concrete cleaning' },
-    { src: sliderGarbageRoom, alt: 'Building garbage room cleaning' },
-  ];
 
   const services = [
     {
@@ -85,8 +75,8 @@ const CommercialStrata = () => {
       />
       <Header />
       <main>
-        <ServiceImageSlider 
-          images={sliderImages}
+        <ServiceHero 
+          image={heroStrata}
           title={language === 'pt' ? 'Serviços Comerciais & Strata' : 'Commercial & Strata Services'}
           subtitle={language === 'pt' ? 'Soluções em Grande Escala' : 'Large-Scale Solutions'}
         />

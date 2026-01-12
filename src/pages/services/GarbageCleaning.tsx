@@ -10,24 +10,14 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import SEO from '@/components/SEO';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import ServiceImageSlider from '@/components/services/ServiceImageSlider';
+import ServiceHero from '@/components/services/ServiceHero';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
 
-// Import slider images - brand-safe, realistic
-import sliderGarbageRoom from '@/assets/slider-garbage-room.jpg';
-import sliderHotWash from '@/assets/slider-hot-pressure-realistic.jpg';
-import sliderParkade from '@/assets/slider-parkade.jpg';
-import sliderDriveway from '@/assets/slider-driveway-realistic.jpg';
+// Import hero image - garbage cleaning specific
+import heroGarbage from '@/assets/slider-garbage-room.jpg';
 
 const GarbageCleaning = () => {
   const { language } = useLanguage();
-
-  const sliderImages = [
-    { src: sliderGarbageRoom, alt: 'Commercial garbage room pressure washing' },
-    { src: sliderHotWash, alt: 'Hot pressure washing for tough stains and grease' },
-    { src: sliderParkade, alt: 'Building common area cleaning' },
-    { src: sliderDriveway, alt: 'Industrial concrete cleaning' },
-  ];
 
   const services = [
     {
@@ -85,8 +75,8 @@ const GarbageCleaning = () => {
       />
       <Header />
       <main>
-        <ServiceImageSlider 
-          images={sliderImages}
+        <ServiceHero 
+          image={heroGarbage}
           title={language === 'pt' ? 'Limpeza de Lixeiras' : 'Garbage & Dumpster Cleaning'}
           subtitle={language === 'pt' ? 'Higiene Profissional' : 'Professional Sanitation'}
         />
