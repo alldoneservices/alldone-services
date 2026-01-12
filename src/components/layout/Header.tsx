@@ -164,8 +164,19 @@ const Header = () => {
               <Phone className="w-5 h-5" />
               <span className="font-semibold">604-900-7172</span>
             </a>
-            <Button asChild variant="hero" size="default">
-              <Link to="/#quote">{t('nav.getQuote')}</Link>
+            <Button 
+              variant="hero" 
+              size="default"
+              onClick={() => {
+                const quoteSection = document.getElementById('quote');
+                if (quoteSection) {
+                  quoteSection.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  window.location.href = '/#quote';
+                }
+              }}
+            >
+              {t('nav.getQuote')}
             </Button>
           </div>
 
@@ -247,10 +258,21 @@ const Header = () => {
                     <Phone className="w-5 h-5" />
                     604-900-7172
                   </a>
-                  <Button asChild variant="hero" size="lg" className="w-full">
-                    <Link to="/#quote" onClick={() => setIsOpen(false)}>
-                      {t('nav.getQuote')}
-                    </Link>
+                  <Button 
+                    variant="hero" 
+                    size="lg" 
+                    className="w-full"
+                    onClick={() => {
+                      setIsOpen(false);
+                      const quoteSection = document.getElementById('quote');
+                      if (quoteSection) {
+                        quoteSection.scrollIntoView({ behavior: 'smooth' });
+                      } else {
+                        window.location.href = '/#quote';
+                      }
+                    }}
+                  >
+                    {t('nav.getQuote')}
                   </Button>
                 </div>
               </div>

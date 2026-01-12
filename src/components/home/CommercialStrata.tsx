@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Building2, Truck, Droplets, ParkingMeter, Wrench, ArrowRight } from 'lucide-react';
+import { Building2, Truck, Droplets, ParkingMeter, Wrench, ArrowRight, Trash2, SprayCan, Fuel } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -21,6 +21,27 @@ const CommercialStrata = () => {
       description: language === 'pt'
         ? 'Manutenção de áreas de alto tráfego'
         : 'Maintenance for high-traffic areas',
+    },
+    {
+      icon: Trash2,
+      title: language === 'pt' ? 'Lavagem de Lixeiras' : 'Garbage Bin Washing',
+      description: language === 'pt'
+        ? 'Limpeza de lixeiras para stratas e restaurantes'
+        : 'Garbage bin cleaning for strata buildings and restaurants',
+    },
+    {
+      icon: SprayCan,
+      title: language === 'pt' ? 'Remoção de Grafite' : 'Graffiti Removal',
+      description: language === 'pt'
+        ? 'Remoção profissional de grafite e pichações'
+        : 'Professional graffiti and vandalism removal',
+    },
+    {
+      icon: Fuel,
+      title: language === 'pt' ? 'Remoção de Manchas de Óleo' : 'Oil Stain Removal',
+      description: language === 'pt'
+        ? 'Desengordurante com lavagem quente para estacionamentos e containers'
+        : 'Degreaser with hot pressure washing for parkades and containers',
     },
     {
       icon: Truck,
@@ -71,7 +92,7 @@ const CommercialStrata = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <motion.div
               key={index}
