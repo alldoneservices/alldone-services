@@ -217,11 +217,20 @@ const QuoteForm = () => {
                         <SelectItem value="pressure-washing">
                           {t('services.pressure.title')}
                         </SelectItem>
+                        <SelectItem value="soft-washing">
+                          {language === 'pt' ? 'Lavagem Suave' : 'Soft Washing'}
+                        </SelectItem>
+                        <SelectItem value="gutter-cleaning">
+                          {language === 'pt' ? 'Limpeza de Calhas' : 'Gutter Cleaning'}
+                        </SelectItem>
                         <SelectItem value="handyman">
                           {t('services.handyman.title')}
                         </SelectItem>
                         <SelectItem value="painting">
                           {t('services.painting.title')}
+                        </SelectItem>
+                        <SelectItem value="others">
+                          {language === 'pt' ? 'Outros' : 'Others'}
                         </SelectItem>
                       </SelectContent>
                     </Select>

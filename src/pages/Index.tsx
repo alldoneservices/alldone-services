@@ -8,6 +8,7 @@ import WhyUs from '@/components/home/WhyUs';
 import BeforeAfter from '@/components/home/BeforeAfter';
 import QuoteForm from '@/components/home/QuoteForm';
 import CTA from '@/components/home/CTA';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Index = () => {
@@ -35,6 +36,7 @@ const Index = () => {
         <CTA />
       </main>
       <Footer />
+      <WhatsAppButton />
     </>
   );
 };

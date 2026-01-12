@@ -52,7 +52,7 @@ const translations = {
     
     // Quote Form
     'quote.title': 'Request a Free Quote',
-    'quote.subtitle': 'Tell us about your project and we\'ll get back to you within 24 hours',
+    'quote.subtitle': 'Tell us about your project and we\'ll get back to you shortly',
     'quote.name': 'Full Name',
     'quote.email': 'Email Address',
     'quote.phone': 'Phone Number',
@@ -67,7 +67,7 @@ const translations = {
     'quote.messagePlaceholder': 'Please describe your project, including any specific requirements...',
     'quote.submit': 'Submit Quote Request',
     'quote.submitting': 'Submitting...',
-    'quote.success': 'Thank you! We\'ll contact you within 24 hours.',
+    'quote.success': 'Thank you! We\'ll contact you shortly.',
     'quote.error': 'Something went wrong. Please try again or call us directly.',
     
     // Footer
@@ -186,7 +186,7 @@ const translations = {
     
     // Quote Form
     'quote.title': 'Solicite um Orçamento Grátis',
-    'quote.subtitle': 'Conte-nos sobre seu projeto e retornaremos em até 24 horas',
+    'quote.subtitle': 'Conte-nos sobre seu projeto e retornaremos em breve',
     'quote.name': 'Nome Completo',
     'quote.email': 'E-mail',
     'quote.phone': 'Telefone',
@@ -201,7 +201,7 @@ const translations = {
     'quote.messagePlaceholder': 'Descreva seu projeto, incluindo requisitos específicos...',
     'quote.submit': 'Enviar Solicitação',
     'quote.submitting': 'Enviando...',
-    'quote.success': 'Obrigado! Entraremos em contato em até 24 horas.',
+    'quote.success': 'Obrigado! Entraremos em contato em breve.',
     'quote.error': 'Algo deu errado. Tente novamente ou ligue diretamente.',
     
     // Footer
