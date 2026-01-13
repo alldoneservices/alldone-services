@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 // Import service images - realistic small-to-medium service company visuals
 import servicePressure from '@/assets/service-pressure-new.jpg';
@@ -12,47 +11,35 @@ import servicePainting from '@/assets/service-painting-new.jpg';
 import serviceHandyman from '@/assets/service-handyman-new.jpg';
 
 const Services = () => {
-  const { language } = useLanguage();
-
   const services = [
     {
       image: servicePressure,
-      title: language === 'pt' ? 'Quente & Frio • Pressão & Lavagem Suave' : 'Hot & Cold • Pressure & Soft Washing',
-      description: language === 'pt' 
-        ? 'O método certo para cada superfície'
-        : 'The right method for every surface',
+      title: 'Hot & Cold • Pressure & Soft Washing',
+      description: 'The right method for every surface',
       href: '/services/pressure-washing',
     },
     {
       image: serviceSoftwash,
-      title: language === 'pt' ? 'Lavagem Suave' : 'Soft Washing',
-      description: language === 'pt'
-        ? 'Limpeza segura para revestimentos, telhados e superfícies delicadas'
-        : 'Safe cleaning for siding, roofs and delicate surfaces',
+      title: 'Soft Washing',
+      description: 'Safe cleaning for siding, roofs and delicate surfaces',
       href: '/services/soft-washing',
     },
     {
       image: serviceGutter,
-      title: language === 'pt' ? 'Limpeza de Calhas' : 'Gutter Cleaning',
-      description: language === 'pt'
-        ? 'Limpeza sazonal de calhas para prevenir danos e bloqueios'
-        : 'Seasonal gutter cleaning to prevent water damage and blockages',
+      title: 'Gutter Cleaning',
+      description: 'Seasonal gutter cleaning to prevent water damage and blockages',
       href: '/services/gutter-cleaning',
     },
     {
       image: servicePainting,
-      title: language === 'pt' ? 'Serviços de Pintura' : 'Painting Services',
-      description: language === 'pt'
-        ? 'Pintura interna e externa bem feita'
-        : 'Interior and exterior painting done right',
+      title: 'Painting Services',
+      description: 'Interior and exterior painting done right',
       href: '/services/painting',
     },
     {
       image: serviceHandyman,
-      title: language === 'pt' ? 'Manutenção de Propriedades' : 'Handyman & Property Care',
-      description: language === 'pt'
-        ? 'Reparos, manutenção e cuidado contínuo da propriedade'
-        : 'Repairs, maintenance and ongoing property care',
+      title: 'Handyman & Property Care',
+      description: 'Repairs, maintenance and ongoing property care',
       href: '/services/handyman',
     },
   ];
@@ -88,12 +75,10 @@ const Services = () => {
           className="text-center mb-16"
         >
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            {language === 'pt' ? 'Nossos Serviços' : 'Our Services'}
+            Our Services
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            {language === 'pt' 
-              ? 'Soluções completas de cuidado de propriedade para todas as necessidades'
-              : 'Comprehensive property care solutions for every need'}
+            Comprehensive property care solutions for every need
           </p>
         </motion.div>
 
@@ -137,7 +122,7 @@ const Services = () => {
                       to={service.href}
                       className="inline-flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all"
                     >
-                      {language === 'pt' ? 'Saiba Mais' : 'Learn More'}
+                      Learn More
                       <ArrowRight className="w-4 h-4" />
                     </Link>
                   </Button>

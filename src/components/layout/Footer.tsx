@@ -4,7 +4,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import logo from '@/assets/logo.jpg';
 
 const Footer = () => {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
 
   return (
     <footer className="bg-primary text-primary-foreground">
@@ -12,9 +12,7 @@ const Footer = () => {
       <div className="bg-accent py-8">
         <div className="container mx-auto px-4 text-center">
           <p className="font-heading text-xl md:text-2xl lg:text-3xl font-bold text-accent-foreground">
-            {language === 'pt' 
-              ? 'De casas pequenas a grandes propriedades — nós fazemos TUDO.'
-              : 'From small homes to large properties — we get it ALL DONE.'}
+            From small homes to large properties — we get it ALL DONE.
           </p>
         </div>
       </div>

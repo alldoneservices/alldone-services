@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 // Import one image per service offered
 import imgPressureWashing from '@/assets/menu-pressure-washing.jpg';
@@ -14,7 +13,6 @@ import imgGarbageCleaning from '@/assets/slider-garbage-room.jpg';
 import imgCommercialStrata from '@/assets/slider-strata-realistic.jpg';
 
 const Hero = () => {
-  const { language } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // One slide per service
@@ -22,37 +20,37 @@ const Hero = () => {
     {
       image: imgPressureWashing,
       alt: 'Hot & Cold Pressure Washing Service',
-      serviceName: language === 'pt' ? 'Lavagem de Alta Pressão' : 'Pressure Washing',
+      serviceName: 'Pressure Washing',
     },
     {
       image: imgSoftWashing,
       alt: 'Soft Washing Service',
-      serviceName: language === 'pt' ? 'Lavagem Suave' : 'Soft Washing',
+      serviceName: 'Soft Washing',
     },
     {
       image: imgGutterCleaning,
       alt: 'Gutter Cleaning Service',
-      serviceName: language === 'pt' ? 'Limpeza de Calhas' : 'Gutter Cleaning',
+      serviceName: 'Gutter Cleaning',
     },
     {
       image: imgPainting,
       alt: 'Professional Painting Service',
-      serviceName: language === 'pt' ? 'Serviços de Pintura' : 'Painting Services',
+      serviceName: 'Painting Services',
     },
     {
       image: imgHandyman,
       alt: 'Handyman & Property Care Service',
-      serviceName: language === 'pt' ? 'Serviços Gerais' : 'Handyman & Property Care',
+      serviceName: 'Handyman & Property Care',
     },
     {
       image: imgGarbageCleaning,
       alt: 'Garbage & Dumpster Cleaning Service',
-      serviceName: language === 'pt' ? 'Limpeza de Lixeiras' : 'Garbage Cleaning',
+      serviceName: 'Garbage Cleaning',
     },
     {
       image: imgCommercialStrata,
       alt: 'Commercial & Strata Services',
-      serviceName: language === 'pt' ? 'Comercial & Strata' : 'Commercial & Strata',
+      serviceName: 'Commercial & Strata',
     },
   ];
 
@@ -149,9 +147,7 @@ const Hero = () => {
             className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-4 drop-shadow-lg"
             style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.5)' }}
           >
-            {language === 'pt' 
-              ? 'Serviços de Cuidado de Propriedade' 
-              : 'Property Care Services'}
+            Property Care Services
           </motion.h1>
           
           <motion.p
@@ -160,9 +156,7 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="text-white/90 text-xl md:text-2xl mb-6"
           >
-            {language === 'pt' 
-              ? 'para Residencial, Comercial e Condomínios' 
-              : 'for Residential, Commercial & Strata'}
+            for Residential, Commercial & Strata
           </motion.p>
 
           {/* Services Tagline */}
@@ -173,14 +167,10 @@ const Hero = () => {
             className="mb-8"
           >
             <p className="text-accent font-heading font-bold text-lg md:text-xl mb-2">
-              {language === 'pt' 
-                ? 'Quente & Frio • Pressão & Lavagem Suave' 
-                : 'Hot & Cold • Pressure & Soft Washing'}
+              Hot & Cold • Pressure & Soft Washing
             </p>
             <p className="text-white/70 text-base md:text-lg">
-              {language === 'pt'
-                ? 'O método certo para cada superfície'
-                : 'The right method for every surface'}
+              The right method for every surface
             </p>
           </motion.div>
 
@@ -192,7 +182,7 @@ const Hero = () => {
           >
             <Button asChild variant="hero" size="xl" className="text-lg px-8 py-6">
               <a href="#quote">
-                {language === 'pt' ? 'Orçamento Grátis' : 'Get a Free Estimate'}
+                Get a Free Estimate
                 <ArrowRight className="w-5 h-5 ml-2" />
               </a>
             </Button>

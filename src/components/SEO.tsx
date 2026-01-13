@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet-async';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 interface SEOProps {
   title?: string;
@@ -16,8 +15,6 @@ const SEO = ({
   type = 'website',
   image = '/og-image.jpg',
 }: SEOProps) => {
-  const { language } = useLanguage();
-  
   const fullTitle = title.includes('All Done') ? title : `${title} | All Done Services`;
 
   const structuredData = {
@@ -85,34 +82,25 @@ const SEO = ({
 
   return (
     <Helmet>
-      {/* Basic Meta Tags */}
-      <html lang={language === 'pt' ? 'pt-BR' : 'en-CA'} />
+      <html lang="en-CA" />
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonical} />
-
-      {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content={type} />
       <meta property="og:url" content={canonical} />
       <meta property="og:image" content={image} />
-      <meta property="og:locale" content={language === 'pt' ? 'pt_BR' : 'en_CA'} />
+      <meta property="og:locale" content="en_CA" />
       <meta property="og:site_name" content="All Done Services" />
-
-      {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
-
-      {/* Additional SEO */}
       <meta name="robots" content="index, follow" />
       <meta name="googlebot" content="index, follow" />
       <meta name="geo.region" content="CA-BC" />
       <meta name="geo.placename" content="Vancouver" />
-
-      {/* Structured Data */}
       <script type="application/ld+json">
         {JSON.stringify(structuredData)}
       </script>

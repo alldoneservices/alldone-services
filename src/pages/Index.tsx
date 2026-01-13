@@ -11,20 +11,13 @@ import BeforeAfter from '@/components/home/BeforeAfter';
 import QuoteForm from '@/components/home/QuoteForm';
 import CTA from '@/components/home/CTA';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 const Index = () => {
-  const { language } = useLanguage();
-
   return (
     <React.Fragment>
       <SEO
-        title={language === 'pt' 
-          ? 'All Done Services - Serviços Profissionais de Manutenção em Vancouver'
-          : 'All Done Services - Professional Property Care in Vancouver'}
-        description={language === 'pt'
-          ? 'Uma ligação, tudo resolvido! Serviços profissionais de lavagem de alta pressão, manutenção e pintura para propriedades comerciais, residenciais e condomínios na região de Vancouver.'
-          : 'One call, all done! Professional pressure washing, handyman, and painting services for commercial, residential, and strata properties in Greater Vancouver Area.'}
+        title="All Done Services - Professional Property Care in Vancouver"
+        description="One call, all done! Professional pressure washing, handyman, and painting services for commercial, residential, and strata properties in Greater Vancouver Area."
         canonical="https://alldone-services.ca"
       />
       <Header />

@@ -25,7 +25,7 @@ interface FormData {
 }
 
 const QuoteForm = () => {
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -133,7 +133,7 @@ const QuoteForm = () => {
                   variant="outline"
                   className="mt-4"
                 >
-                  {language === 'pt' ? 'Enviar Outra Solicitação' : 'Submit Another Request'}
+                  Submit Another Request
                 </Button>
               </div>
             ) : (
@@ -218,10 +218,10 @@ const QuoteForm = () => {
                           {t('services.pressure.title')}
                         </SelectItem>
                         <SelectItem value="soft-washing">
-                          {language === 'pt' ? 'Lavagem Suave' : 'Soft Washing'}
+                          Soft Washing
                         </SelectItem>
                         <SelectItem value="gutter-cleaning">
-                          {language === 'pt' ? 'Limpeza de Calhas' : 'Gutter Cleaning'}
+                          Gutter Cleaning
                         </SelectItem>
                         <SelectItem value="handyman">
                           {t('services.handyman.title')}
@@ -230,7 +230,7 @@ const QuoteForm = () => {
                           {t('services.painting.title')}
                         </SelectItem>
                         <SelectItem value="others">
-                          {language === 'pt' ? 'Outros' : 'Others'}
+                          Others
                         </SelectItem>
                       </SelectContent>
                     </Select>

@@ -1,20 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, X } from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { MessageCircle } from 'lucide-react';
 
 const WhatsAppButton = () => {
-  const { language } = useLanguage();
   const [isHovered, setIsHovered] = useState(false);
-  
-  // WhatsApp number (international format without + or spaces)
   const phoneNumber = '16049007172';
-  const message = encodeURIComponent(
-    language === 'pt' 
-      ? 'Olá! Gostaria de saber mais sobre os serviços.' 
-      : 'Hello! I would like to know more about your services.'
-  );
-  
+  const message = encodeURIComponent('Hello! I would like to know more about your services.');
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
   return (
@@ -29,7 +20,7 @@ const WhatsAppButton = () => {
             className="absolute bottom-0 right-16 bg-card rounded-lg shadow-lg border border-border p-4 whitespace-nowrap"
           >
             <p className="text-foreground font-medium text-sm">
-              {language === 'pt' ? 'Fale conosco pelo WhatsApp!' : 'Chat with us on WhatsApp!'}
+              Chat with us on WhatsApp!
             </p>
           </motion.div>
         )}
