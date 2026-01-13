@@ -2,67 +2,48 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Building2, Truck, Droplets, ParkingMeter, Wrench, ArrowRight, Trash2, SprayCan, Fuel } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 const CommercialStrata = () => {
-  const { language } = useLanguage();
-
   const services = [
     {
       icon: Building2,
-      title: language === 'pt' ? 'Lavagem de Edifícios' : 'Apartment & Strata Building Washing',
-      description: language === 'pt'
-        ? 'Limpeza profissional de edifícios residenciais e comerciais'
-        : 'Professional cleaning for residential and commercial buildings',
+      title: 'Apartment & Strata Building Washing',
+      description: 'Professional cleaning for residential and commercial buildings',
     },
     {
       icon: ParkingMeter,
-      title: language === 'pt' ? 'Estacionamentos e Áreas Comuns' : 'Parkades, Walkways & Common Areas',
-      description: language === 'pt'
-        ? 'Manutenção de áreas de alto tráfego'
-        : 'Maintenance for high-traffic areas',
+      title: 'Parkades, Walkways & Common Areas',
+      description: 'Maintenance for high-traffic areas',
     },
     {
       icon: Trash2,
-      title: language === 'pt' ? 'Lavagem de Lixeiras' : 'Garbage Bin Washing',
-      description: language === 'pt'
-        ? 'Limpeza de lixeiras para stratas e restaurantes'
-        : 'Garbage bin cleaning for strata buildings and restaurants',
+      title: 'Garbage Bin Washing',
+      description: 'Garbage bin cleaning for strata buildings and restaurants',
     },
     {
       icon: SprayCan,
-      title: language === 'pt' ? 'Remoção de Grafite' : 'Graffiti Removal',
-      description: language === 'pt'
-        ? 'Remoção profissional de grafite e pichações'
-        : 'Professional graffiti and vandalism removal',
+      title: 'Graffiti Removal',
+      description: 'Professional graffiti and vandalism removal',
     },
     {
       icon: Fuel,
-      title: language === 'pt' ? 'Remoção de Manchas de Óleo' : 'Oil Stain Removal',
-      description: language === 'pt'
-        ? 'Desengordurante com lavagem quente para estacionamentos e containers'
-        : 'Degreaser with hot pressure washing for parkades and containers',
+      title: 'Oil Stain Removal',
+      description: 'Degreaser with hot pressure washing for parkades and containers',
     },
     {
       icon: Truck,
-      title: language === 'pt' ? 'Lavagem de Frotas' : 'Fleet Washing',
-      description: language === 'pt'
-        ? 'Caminhões, vans e veículos de trabalho'
-        : 'Trucks, vans and work vehicles',
+      title: 'Fleet Washing',
+      description: 'Trucks, vans and work vehicles',
     },
     {
       icon: Wrench,
-      title: language === 'pt' ? 'Equipamentos Pesados' : 'Heavy Equipment & Machinery',
-      description: language === 'pt'
-        ? 'Limpeza de tratores, escavadeiras e maquinário'
-        : 'Tractors, excavators and machinery cleaning',
+      title: 'Heavy Equipment & Machinery',
+      description: 'Tractors, excavators and machinery cleaning',
     },
     {
       icon: Droplets,
-      title: language === 'pt' ? 'Calhas Multi-Unidades' : 'Multi-Unit Gutter Cleaning',
-      description: language === 'pt'
-        ? 'Limpeza sazonal de calhas para edifícios de múltiplas unidades'
-        : 'Seasonal gutter cleaning for multi-unit buildings',
+      title: 'Multi-Unit Gutter Cleaning',
+      description: 'Seasonal gutter cleaning for multi-unit buildings',
     },
   ];
 
@@ -79,16 +60,14 @@ const CommercialStrata = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
             <Building2 className="w-5 h-5 text-primary" />
             <span className="text-primary font-semibold text-sm uppercase tracking-wide">
-              {language === 'pt' ? 'Clientes Comerciais' : 'Commercial Clients'}
+              Commercial Clients
             </span>
           </div>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            {language === 'pt' ? 'Serviços Comerciais e Condomínios' : 'Commercial & Strata Services'}
+            Commercial & Strata Services
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            {language === 'pt'
-              ? 'Serviços confiáveis de cuidado de propriedade para conselhos de condomínio, administradores de propriedades e clientes comerciais.'
-              : 'Reliable property care services tailored for strata councils, property managers, and commercial clients.'}
+            Reliable property care services tailored for strata councils, property managers, and commercial clients.
           </p>
         </motion.div>
 
@@ -125,7 +104,7 @@ const CommercialStrata = () => {
         >
           <Button asChild size="lg" className="gap-2">
             <Link to="/services/commercial-strata">
-              {language === 'pt' ? 'Ver Todos os Serviços Comerciais' : 'View All Commercial Services'}
+              View All Commercial Services
               <ArrowRight className="w-5 h-5" />
             </Link>
           </Button>

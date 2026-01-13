@@ -1,89 +1,30 @@
-import { 
-  Building2, 
-  Truck, 
-  ParkingMeter, 
-  Users, 
-  Wrench,
-  CalendarCheck
-} from 'lucide-react';
+import { Building2, Truck, ParkingMeter, Users, Wrench, CalendarCheck } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import SEO from '@/components/SEO';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ServiceHero from '@/components/services/ServiceHero';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
-
-// Import hero image - commercial/strata specific
 import heroStrata from '@/assets/slider-strata-realistic.jpg';
 
 const CommercialStrata = () => {
-  const { language } = useLanguage();
-
+  const { t } = useLanguage();
   const services = [
-    {
-      icon: Building2,
-      title: language === 'pt' ? 'Lavagem de Edifícios' : 'Building Washing',
-      description: language === 'pt' 
-        ? 'Lavagem completa de edifícios de apartamentos e condomínios de 3-4 andares'
-        : 'Complete washing of 3-4 storey apartment and strata buildings',
-    },
-    {
-      icon: ParkingMeter,
-      title: language === 'pt' ? 'Estacionamentos e Garagens' : 'Parkades & Common Areas',
-      description: language === 'pt'
-        ? 'Limpeza profunda de estacionamentos, passarelas e áreas comuns'
-        : 'Deep cleaning of parkades, walkways and common areas',
-    },
-    {
-      icon: Truck,
-      title: language === 'pt' ? 'Lavagem de Frotas' : 'Fleet Washing',
-      description: language === 'pt'
-        ? 'Lavagem de caminhões, vans e veículos de trabalho'
-        : 'Washing of trucks, vans and work vehicles',
-    },
-    {
-      icon: Wrench,
-      title: language === 'pt' ? 'Equipamentos Pesados' : 'Heavy Equipment',
-      description: language === 'pt'
-        ? 'Limpeza de tratores, máquinas e equipamentos industriais'
-        : 'Cleaning of tractors, machinery and industrial equipment',
-    },
-    {
-      icon: Users,
-      title: language === 'pt' ? 'Gestores de Strata' : 'Strata Managers',
-      description: language === 'pt'
-        ? 'Serviços especializados para gestores e síndicos de condomínios'
-        : 'Specialized services for strata managers and building councils',
-    },
-    {
-      icon: CalendarCheck,
-      title: language === 'pt' ? 'Contratos de Manutenção' : 'Maintenance Contracts',
-      description: language === 'pt'
-        ? 'Programas de manutenção regular para propriedades comerciais'
-        : 'Regular maintenance programs for commercial properties',
-    },
+    { icon: Building2, title: 'Building Washing', description: 'Complete washing of 3-4 storey apartment and strata buildings' },
+    { icon: ParkingMeter, title: 'Parkades & Common Areas', description: 'Deep cleaning of parkades, walkways and common areas' },
+    { icon: Truck, title: 'Fleet Washing', description: 'Washing of trucks, vans and work vehicles' },
+    { icon: Wrench, title: 'Heavy Equipment', description: 'Cleaning of tractors, machinery and industrial equipment' },
+    { icon: Users, title: 'Strata Managers', description: 'Specialized services for strata managers and building councils' },
+    { icon: CalendarCheck, title: 'Maintenance Contracts', description: 'Regular maintenance programs for commercial properties' },
   ];
 
   return (
     <>
-      <SEO
-        title={language === 'pt' ? 'Serviços Comerciais e Strata - All Done Services' : 'Commercial & Strata Services - All Done Services'}
-        description={language === 'pt' 
-          ? 'Serviços profissionais de limpeza para edifícios comerciais e condomínios em Vancouver.'
-          : 'Professional cleaning services for commercial buildings and strata properties in Vancouver.'}
-        canonical="https://alldone-services.ca/services/commercial-strata"
-      />
+      <SEO title="Commercial & Strata Services - All Done Services" description="Professional cleaning services for commercial buildings and strata properties in Vancouver." canonical="https://alldone-services.ca/services/commercial-strata" />
       <Header />
       <main>
-        <ServiceHero 
-          image={heroStrata}
-          title={language === 'pt' ? 'Serviços Comerciais & Strata' : 'Commercial & Strata Services'}
-          subtitle={language === 'pt' ? 'Soluções em Grande Escala' : 'Large-Scale Solutions'}
-        />
-        <ServiceList
-          title={language === 'pt' ? 'Nossos Serviços Comerciais' : 'Our Commercial Services'}
-          services={services}
-        />
+        <ServiceHero image={heroStrata} title="Commercial & Strata Services" subtitle="Large-Scale Solutions" />
+        <ServiceList title="Our Commercial Services" services={services} />
         <ServiceCTA />
       </main>
       <Footer />

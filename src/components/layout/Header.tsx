@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
-import LanguageSwitcher from './LanguageSwitcher';
 import logo from '@/assets/logo.jpg';
 
 // Service menu images - LOCKED, do not auto-generate
@@ -17,7 +16,7 @@ import serviceSoftwash from '@/assets/service-softwash-new.jpg';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
@@ -27,8 +26,8 @@ const Header = () => {
   // LOCKED menu images - do not change without explicit instruction
   const serviceMenuItems = [
     { href: '/services/pressure-washing', label: t('nav.pressureWashing'), image: menuPressure },
-    { href: '/services/soft-washing', label: language === 'pt' ? 'Lavagem Suave' : 'Soft Washing', image: serviceSoftwash },
-    { href: '/services/gutter-cleaning', label: language === 'pt' ? 'Limpeza de Calhas' : 'Gutter Cleaning', image: serviceGutter },
+    { href: '/services/soft-washing', label: 'Soft Washing', image: serviceSoftwash },
+    { href: '/services/gutter-cleaning', label: 'Gutter Cleaning', image: serviceGutter },
     { href: '/services/painting', label: t('nav.painting'), image: menuPainting },
     { href: '/services/handyman', label: t('nav.handyman'), image: menuHandyman },
   ];
@@ -59,7 +58,7 @@ const Header = () => {
                 All Done Services
               </span>
               <span className="text-accent text-xs md:text-sm font-medium">
-                {language === 'pt' ? 'Uma Ligação, Tudo Resolvido!' : 'One Call, All Done!'}
+                One Call, All Done!
               </span>
             </div>
           </Link>
@@ -156,7 +155,6 @@ const Header = () => {
 
           {/* Right Side */}
           <div className="hidden lg:flex items-center gap-4">
-            <LanguageSwitcher />
             <a
               href="tel:604-900-7172"
               className="flex items-center gap-2 text-primary-foreground hover:text-accent transition-colors"
@@ -182,7 +180,6 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <div className="flex lg:hidden items-center gap-3">
-            <LanguageSwitcher />
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-primary-foreground"

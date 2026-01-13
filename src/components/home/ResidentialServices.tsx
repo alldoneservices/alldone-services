@@ -1,63 +1,45 @@
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
 import { Home, Droplets, Car, PaintBucket, Wrench, Warehouse, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useLanguage } from '@/contexts/LanguageContext';
 
 const ResidentialServices = () => {
-  const { language } = useLanguage();
-
   const services = [
     {
       icon: Home,
-      title: language === 'pt' ? 'Lavagem da Casa' : 'House Washing',
-      description: language === 'pt'
-        ? 'Limpeza profissional de fachadas e paredes externas'
-        : 'Professional cleaning of facades and exterior walls',
+      title: 'House Washing',
+      description: 'Professional cleaning of facades and exterior walls',
     },
     {
       icon: Home,
-      title: language === 'pt' ? 'Lavagem do Telhado' : 'Roof Washing',
-      description: language === 'pt'
-        ? 'Remoção segura de musgo, algas e sujeira do telhado'
-        : 'Safe removal of moss, algae and dirt from your roof',
+      title: 'Roof Washing',
+      description: 'Safe removal of moss, algae and dirt from your roof',
     },
     {
       icon: Car,
-      title: language === 'pt' ? 'Lavagem de Driveway' : 'Driveway Washing',
-      description: language === 'pt'
-        ? 'Restaure a aparência da sua entrada e calçadas'
-        : 'Restore the look of your driveway and walkways',
+      title: 'Driveway Washing',
+      description: 'Restore the look of your driveway and walkways',
     },
     {
       icon: Droplets,
-      title: language === 'pt' ? 'Limpeza de Calhas' : 'Gutter Cleaning',
-      description: language === 'pt'
-        ? 'Limpeza completa de calhas para proteger sua casa'
-        : 'Complete gutter cleaning to protect your home',
+      title: 'Gutter Cleaning',
+      description: 'Complete gutter cleaning to protect your home',
       link: '/services/gutter-cleaning',
     },
     {
       icon: PaintBucket,
-      title: language === 'pt' ? 'Pintura' : 'Painting',
-      description: language === 'pt'
-        ? 'Pintura interior e exterior com acabamento profissional'
-        : 'Interior and exterior painting with professional finish',
+      title: 'Painting',
+      description: 'Interior and exterior painting with professional finish',
       link: '/services/painting',
     },
     {
       icon: Warehouse,
-      title: language === 'pt' ? 'Renovação de Garagem' : 'Garage Renovation',
-      description: language === 'pt'
-        ? 'Transforme sua garagem com pintura e organização'
-        : 'Transform your garage with painting and organization',
+      title: 'Garage Renovation',
+      description: 'Transform your garage with painting and organization',
     },
     {
       icon: Wrench,
-      title: language === 'pt' ? 'Handyman' : 'Handyman',
-      description: language === 'pt'
-        ? 'Reparos gerais e manutenção residencial'
-        : 'General repairs and residential maintenance',
+      title: 'Handyman',
+      description: 'General repairs and residential maintenance',
       link: '/services/handyman',
     },
   ];
@@ -75,16 +57,14 @@ const ResidentialServices = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
             <Home className="w-5 h-5 text-accent-foreground" />
             <span className="text-accent-foreground font-semibold text-sm uppercase tracking-wide">
-              {language === 'pt' ? 'Clientes Residenciais' : 'Residential Clients'}
+              Residential Clients
             </span>
           </div>
           <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            {language === 'pt' ? 'Serviços Residenciais' : 'Residential Services'}
+            Residential Services
           </h2>
           <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-            {language === 'pt'
-              ? 'Cuidamos da sua casa como se fosse nossa. Serviços completos de manutenção e limpeza para residências.'
-              : 'We care for your home as if it were our own. Complete maintenance and cleaning services for residences.'}
+            We care for your home as if it were our own. Complete maintenance and cleaning services for residences.
           </p>
         </motion.div>
 
@@ -127,7 +107,7 @@ const ResidentialServices = () => {
               element?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            {language === 'pt' ? 'Solicite um Orçamento Grátis' : 'Get a Free Quote'}
+            Get a Free Quote
             <ArrowRight className="w-5 h-5" />
           </Button>
         </motion.div>

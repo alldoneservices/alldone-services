@@ -1,89 +1,28 @@
-import { 
-  Trash2, 
-  Building2, 
-  Sparkles, 
-  Shield, 
-  Calendar,
-  Wind
-} from 'lucide-react';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { Trash2, Building2, Sparkles, Shield, Calendar, Wind } from 'lucide-react';
 import SEO from '@/components/SEO';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ServiceHero from '@/components/services/ServiceHero';
 import { ServiceList, ServiceCTA } from '@/components/services/ServiceComponents';
-
-// Import hero image - garbage cleaning specific
 import heroGarbage from '@/assets/slider-garbage-room.jpg';
 
 const GarbageCleaning = () => {
-  const { language } = useLanguage();
-
   const services = [
-    {
-      icon: Trash2,
-      title: language === 'pt' ? 'Limpeza de Lixeiras' : 'Dumpster Cleaning',
-      description: language === 'pt' 
-        ? 'Limpeza profunda e desinfecção de lixeiras e containers'
-        : 'Deep cleaning and sanitization of dumpsters and bins',
-    },
-    {
-      icon: Building2,
-      title: language === 'pt' ? 'Salas de Lixo' : 'Garbage Rooms',
-      description: language === 'pt'
-        ? 'Lavagem completa de salas de lixo em edifícios residenciais e comerciais'
-        : 'Complete washing of garbage rooms in residential and commercial buildings',
-    },
-    {
-      icon: Wind,
-      title: language === 'pt' ? 'Eliminação de Odores' : 'Odor Elimination',
-      description: language === 'pt'
-        ? 'Tratamento especializado para remover odores persistentes'
-        : 'Specialized treatment to remove persistent odors',
-    },
-    {
-      icon: Sparkles,
-      title: language === 'pt' ? 'Desinfecção' : 'Sanitization',
-      description: language === 'pt'
-        ? 'Desinfecção profissional para eliminar bactérias e germes'
-        : 'Professional sanitization to eliminate bacteria and germs',
-    },
-    {
-      icon: Calendar,
-      title: language === 'pt' ? 'Serviço Regular' : 'Regular Service',
-      description: language === 'pt'
-        ? 'Programas de limpeza semanal ou mensal para restaurantes e edifícios'
-        : 'Weekly or monthly cleaning programs for restaurants and buildings',
-    },
-    {
-      icon: Shield,
-      title: language === 'pt' ? 'Conformidade Sanitária' : 'Health Compliance',
-      description: language === 'pt'
-        ? 'Manutenção de padrões de saúde e higiene para inspeções'
-        : 'Maintaining health and hygiene standards for inspections',
-    },
+    { icon: Trash2, title: 'Dumpster Cleaning', description: 'Deep cleaning and sanitization of dumpsters and bins' },
+    { icon: Building2, title: 'Garbage Rooms', description: 'Complete washing of garbage rooms in residential and commercial buildings' },
+    { icon: Wind, title: 'Odor Elimination', description: 'Specialized treatment to remove persistent odors' },
+    { icon: Sparkles, title: 'Sanitization', description: 'Professional sanitization to eliminate bacteria and germs' },
+    { icon: Calendar, title: 'Regular Service', description: 'Weekly or monthly cleaning programs for restaurants and buildings' },
+    { icon: Shield, title: 'Health Compliance', description: 'Maintaining health and hygiene standards for inspections' },
   ];
 
   return (
     <>
-      <SEO
-        title={language === 'pt' ? 'Limpeza de Lixeiras e Salas de Lixo - All Done Services' : 'Garbage & Dumpster Cleaning - All Done Services'}
-        description={language === 'pt' 
-          ? 'Serviços profissionais de limpeza de lixeiras e salas de lixo em Vancouver.'
-          : 'Professional garbage room and dumpster cleaning services in Vancouver.'}
-        canonical="https://alldone-services.ca/services/garbage-cleaning"
-      />
+      <SEO title="Garbage & Dumpster Cleaning - All Done Services" description="Professional garbage room and dumpster cleaning services in Vancouver." canonical="https://alldone-services.ca/services/garbage-cleaning" />
       <Header />
       <main>
-        <ServiceHero 
-          image={heroGarbage}
-          title={language === 'pt' ? 'Limpeza de Lixeiras' : 'Garbage & Dumpster Cleaning'}
-          subtitle={language === 'pt' ? 'Higiene Profissional' : 'Professional Sanitation'}
-        />
-        <ServiceList
-          title={language === 'pt' ? 'Nossos Serviços de Limpeza' : 'Our Cleaning Services'}
-          services={services}
-        />
+        <ServiceHero image={heroGarbage} title="Garbage & Dumpster Cleaning" subtitle="Professional Sanitation" />
+        <ServiceList title="Our Cleaning Services" services={services} />
         <ServiceCTA />
       </main>
       <Footer />
