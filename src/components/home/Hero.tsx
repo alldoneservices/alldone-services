@@ -4,6 +4,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 // Import one image per service offered
+import { Link } from 'react-router-dom';
 import imgPressureWashing from '@/assets/menu-pressure-washing.jpg';
 import imgSoftWashing from '@/assets/slider-softwash-pro.jpg';
 import imgGutterCleaning from '@/assets/slider-gutter-residential.jpg';
@@ -11,6 +12,7 @@ import imgPainting from '@/assets/menu-painting.jpg';
 import imgHandyman from '@/assets/menu-handyman.jpg';
 import imgGarbageCleaning from '@/assets/slider-garbage-room.jpg';
 import imgCommercialStrata from '@/assets/slider-strata-realistic.jpg';
+import imgUnitTurnover from '@/assets/slider-unit-turnover.jpg';
 
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -65,6 +67,14 @@ const Hero = () => {
       serviceName: 'Commercial & Strata',
       tagline: 'Full Building Care',
       subtitle: 'Comprehensive property maintenance',
+    },
+    {
+      image: imgUnitTurnover,
+      alt: 'Unit Turnover & Building Maintenance',
+      serviceName: 'Unit Turnover & Maintenance',
+      tagline: 'On-Call Building Maintenance',
+      subtitle: 'Fast turnovers & reliable maintenance partner',
+      link: '/services/unit-turnover',
     },
   ];
 
@@ -189,11 +199,12 @@ const Hero = () => {
             </p>
           </motion.div>
 
-          {/* CTA Button */}
+          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-wrap gap-4"
           >
             <Button asChild variant="hero" size="xl" className="text-lg px-8 py-6">
               <a href="#quote">
@@ -201,6 +212,14 @@ const Hero = () => {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </a>
             </Button>
+            {slides[currentSlide].link && (
+              <Button asChild variant="outline" size="xl" className="text-lg px-8 py-6 bg-white/10 border-white/30 text-white hover:bg-white/20">
+                <Link to={slides[currentSlide].link}>
+                  Learn More
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+              </Button>
+            )}
           </motion.div>
         </div>
       </div>
