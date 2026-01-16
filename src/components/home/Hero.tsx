@@ -15,42 +15,56 @@ import imgCommercialStrata from '@/assets/slider-strata-realistic.jpg';
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  // One slide per service
+  // One slide per service with specific taglines
   const slides = [
     {
       image: imgPressureWashing,
       alt: 'Hot & Cold Pressure Washing Service',
       serviceName: 'Pressure Washing',
+      tagline: 'Hot & Cold • Pressure Washing',
+      subtitle: 'The right method for every surface',
     },
     {
       image: imgSoftWashing,
       alt: 'Soft Washing Service',
       serviceName: 'Soft Washing',
+      tagline: 'Gentle Yet Powerful Cleaning',
+      subtitle: 'Safe for delicate surfaces',
     },
     {
       image: imgGutterCleaning,
       alt: 'Gutter Cleaning Service',
       serviceName: 'Gutter Cleaning',
+      tagline: 'Protect Your Property',
+      subtitle: 'Prevent water damage & blockages',
     },
     {
       image: imgPainting,
       alt: 'Professional Painting Service',
       serviceName: 'Painting Services',
+      tagline: 'Interior & Exterior Painting',
+      subtitle: 'Quality finishes that last',
     },
     {
       image: imgHandyman,
       alt: 'Handyman & Property Care Service',
       serviceName: 'Handyman & Property Care',
+      tagline: 'Repairs & Maintenance',
+      subtitle: 'No job too small',
     },
     {
       image: imgGarbageCleaning,
       alt: 'Garbage & Dumpster Cleaning Service',
       serviceName: 'Garbage Cleaning',
+      tagline: 'Sanitize & Deodorize',
+      subtitle: 'Keep your property fresh & clean',
     },
     {
       image: imgCommercialStrata,
       alt: 'Commercial & Strata Services',
       serviceName: 'Commercial & Strata',
+      tagline: 'Full Building Care',
+      subtitle: 'Comprehensive property maintenance',
     },
   ];
 
@@ -159,18 +173,19 @@ const Hero = () => {
             for Residential, Commercial & Strata
           </motion.p>
 
-          {/* Services Tagline */}
+          {/* Services Tagline - Dynamic per slide */}
           <motion.div
+            key={`tagline-${currentSlide}`}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mb-8"
           >
             <p className="text-accent font-heading font-bold text-lg md:text-xl mb-2">
-              Hot & Cold • Pressure & Soft Washing
+              {slides[currentSlide].tagline}
             </p>
             <p className="text-white/70 text-base md:text-lg">
-              The right method for every surface
+              {slides[currentSlide].subtitle}
             </p>
           </motion.div>
 
