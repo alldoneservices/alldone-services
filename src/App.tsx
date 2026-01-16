@@ -13,6 +13,7 @@ import Handyman from "./pages/services/Handyman";
 import Painting from "./pages/services/Painting";
 import CommercialStrata from "./pages/services/CommercialStrata";
 import GarbageCleaning from "./pages/services/GarbageCleaning";
+import UnitTurnover from "./pages/services/UnitTurnover";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -35,6 +36,7 @@ const App = () => (
               <Route path="/services/painting" element={<Painting />} />
               <Route path="/services/commercial-strata" element={<CommercialStrata />} />
               <Route path="/services/garbage-cleaning" element={<GarbageCleaning />} />
+              <Route path="/services/unit-turnover" element={<UnitTurnover />} />
               <Route path="/contact" element={<Contact />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

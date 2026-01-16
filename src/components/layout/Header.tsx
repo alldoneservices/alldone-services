@@ -30,6 +30,7 @@ const Header = () => {
     { href: '/services/gutter-cleaning', label: 'Gutter Cleaning', image: serviceGutter },
     { href: '/services/painting', label: t('nav.painting'), image: menuPainting },
     { href: '/services/handyman', label: t('nav.handyman'), image: menuHandyman },
+    { href: '/services/unit-turnover', label: 'Unit Turnover & Maintenance', image: menuHandyman },
   ];
 
   const navLinks = [
